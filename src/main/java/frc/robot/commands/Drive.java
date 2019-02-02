@@ -1,6 +1,7 @@
 package frc.robot.commands;
 
 import frc.robot.Robot;
+import frc.robot.OI;
 
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.command.Command;
@@ -9,7 +10,7 @@ import static frc.robot.XBoxControllerMap.*;
 
 public class Drive extends Command {
 
-    private Joystick controller = Robot.m_oi.xboxController;
+    private Joystick controller = OI.xboxController;
     private double threshold = 0.2;
 
     public Drive() {
