@@ -27,27 +27,27 @@ public class DriveSubsystem extends Subsystem {
 
     public DriveSubsystem() {
         frontLeft = new CANSparkMax(1, MotorType.kBrushless);
-        addChild("FrontLeft",(Sendable) frontLeft);
+        //addChild("FrontLeft",(Sendable) frontLeft);
         frontLeft.setInverted(false);
         
         rearLeft = new CANSparkMax(2, MotorType.kBrushless);
-        addChild("RearLeft",(Sendable) rearLeft);
+        //addChild("RearLeft",(Sendable) rearLeft);
         rearLeft.setInverted(false);
         
         leftMotors = new SpeedControllerGroup(frontLeft, rearLeft  );
-        addChild("LeftMotors",leftMotors);
+        //addChild("LeftMotors",leftMotors);
         
         
         frontRight = new CANSparkMax(3, MotorType.kBrushless);
-        addChild("FrontRight",(Sendable) frontRight);
+        //addChild("FrontRight",(Sendable) frontRight);
         frontRight.setInverted(false);
         
         rearRight = new CANSparkMax(4, MotorType.kBrushless);
-        addChild("RearRight",(Sendable) rearRight);
+        //addChild("RearRight",(Sendable) rearRight);
         rearRight.setInverted(false);
         
         rightMotors = new SpeedControllerGroup(frontRight, rearRight  );
-        addChild("RightMotors",rightMotors);
+        //addChild("RightMotors",rightMotors);
         
 
         arcadeDrive = new DifferentialDrive(leftMotors, rightMotors);
