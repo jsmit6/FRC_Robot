@@ -28,10 +28,10 @@ public class Drive extends Command {
         double xAxis = controller.getRawAxis(LeftJoystickY);
         double yAxis = controller.getRawAxis(RightJoystickX);
         //If either axes is less than threshold don't use them.
-        if(xAxis < threshold){
+        if(Math.abs(xAxis) < threshold){
             xAxis = 0;
         }
-        if(yAxis < threshold){
+        if(Math.abs(yAxis) < threshold){
             yAxis = 0;
         }
         Robot.driveSubsystem.drive(xAxis, yAxis);
