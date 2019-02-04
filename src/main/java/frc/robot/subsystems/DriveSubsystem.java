@@ -1,15 +1,13 @@
 package frc.robot.subsystems;
 
 
-import frc.robot.commands.Drive;
-
 import com.revrobotics.CANSparkMax;
-import static com.revrobotics.CANSparkMaxLowLevel.*;
+import com.revrobotics.CANSparkMaxLowLevel.MotorType;
 
-import edu.wpi.first.wpilibj.Sendable;
 import edu.wpi.first.wpilibj.SpeedControllerGroup;
 import edu.wpi.first.wpilibj.command.Subsystem;
 import edu.wpi.first.wpilibj.drive.DifferentialDrive;
+import frc.robot.commands.Drive;
 
 
 public class DriveSubsystem extends Subsystem {
@@ -27,28 +25,21 @@ public class DriveSubsystem extends Subsystem {
 
     public DriveSubsystem() {
         frontLeft = new CANSparkMax(1, MotorType.kBrushless);
-        //addChild("FrontLeft",(Sendable) frontLeft);
         frontLeft.setInverted(false);
         
         rearLeft = new CANSparkMax(2, MotorType.kBrushless);
-        //addChild("RearLeft",(Sendable) rearLeft);
         rearLeft.setInverted(false);
         
         leftMotors = new SpeedControllerGroup(frontLeft, rearLeft  );
-        //addChild("LeftMotors",leftMotors);
         
         
         frontRight = new CANSparkMax(3, MotorType.kBrushless);
-        //addChild("FrontRight",(Sendable) frontRight);
         frontRight.setInverted(false);
         
         rearRight = new CANSparkMax(4, MotorType.kBrushless);
-        //addChild("RearRight",(Sendable) rearRight);
         rearRight.setInverted(false);
         
-        rightMotors = new SpeedControllerGroup(frontRight, rearRight  );
-        //addChild("RightMotors",rightMotors);
-        
+        rightMotors = new SpeedControllerGroup(frontRight, rearRight  );        
 
         arcadeDrive = new DifferentialDrive(leftMotors, rightMotors);
     }
