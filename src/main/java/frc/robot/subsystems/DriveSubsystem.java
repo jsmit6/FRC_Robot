@@ -56,7 +56,7 @@ public class DriveSubsystem extends Subsystem {
     }
 
     public void drive(double xAxis, double yAxis){
-        arcadeDrive.arcadeDrive(xAxis, yAxis);
+        arcadeDrive.arcadeDrive(-yAxis, xAxis);
     }
 
     public void stop(){
