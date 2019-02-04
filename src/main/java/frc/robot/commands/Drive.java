@@ -25,8 +25,8 @@ public class Drive extends Command {
     // Called repeatedly when this Command is scheduled to run
     @Override
     protected void execute() {
-        double xAxis = controller.getRawAxis(LeftJoystickY);
-        double yAxis = controller.getRawAxis(RightJoystickX);
+        double yAxis = controller.getRawAxis(LeftJoystickY);
+        double xAxis = controller.getRawAxis(RightJoystickX);
         //If either axes is less than threshold don't use them.
         if(Math.abs(xAxis) < threshold){
             xAxis = 0;
