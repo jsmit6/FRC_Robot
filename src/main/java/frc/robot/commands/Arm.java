@@ -1,16 +1,24 @@
 package frc.robot.commands;
 
-import frc.robot.Robot;
-import frc.robot.OI;
-import edu.wpi.first.wpilibj.command.Command;
-import edu.wpi.first.wpilibj.Joystick;
-import static frc.robot.XBoxControllerMap.*;
+import static frc.robot.XBoxControllerMap.LT;
+import static frc.robot.XBoxControllerMap.RT;
 
+import edu.wpi.first.wpilibj.Counter;
+import edu.wpi.first.wpilibj.DigitalInput;
+import edu.wpi.first.wpilibj.Joystick;
+import edu.wpi.first.wpilibj.command.Command;
+import frc.robot.OI;
+import frc.robot.Robot;
 
 public class Arm extends Command {
 
     private Joystick controller = OI.xboxController;
     private double threshold = 0.05;
+
+    DigitalInput upLimitSwitch = new DigitalInput(0);
+    DigitalInput downLimitSwitch = new DigitalInput(1);
+    Counter upCounter = new Counter(upLimitSwitch);
+    Counter downCounter = new Counter(downLimitSwitch);
 
     public Arm() {
         requires(Robot.armSubsystem);
@@ -19,6 +27,7 @@ public class Arm extends Command {
     // Called just before this Command runs the first time
     @Override
     protected void initialize() {
+        initializeLimitSwitches();
     }
 
     // Called repeatedly when this Command is scheduled to run
@@ -27,10 +36,10 @@ public class Arm extends Command {
         double rTrigger = controller.getRawAxis(RT);
         double lTrigger = controller.getRawAxis(LT);
         //If either axes is less than threshold don't use them.
-        if(Math.abs(rTrigger) < threshold){
+        if(Math.abs(rTrigger) < threshold || isUpSwitchSet()){
             rTrigger = 0;
         }
-        if(Math.abs(lTrigger) < threshold){
+        if(Math.abs(lTrigger) < threshold || isDownSwitchSet()){
             lTrigger = 0;
         }
         if(lTrigger > 0 && rTrigger > 0){
@@ -63,5 +72,18 @@ public class Arm extends Command {
     @Override
     protected void interrupted() {
 
+    }
+
+    protected void initializeLimitSwitches(){
+        upCounter.reset();
+        downCounter.reset();
+    }
+
+    public boolean isUpSwitchSet() {
+        return upCounter.get() > 0 || !upLimitSwitch.get();
+    }
+
+    public boolean isDownSwitchSet() {
+        return downCounter.get() > 0 || !downLimitSwitch.get();
     }
 }
