@@ -42,6 +42,7 @@ public class DriveSubsystem extends Subsystem {
         rightMotors = new SpeedControllerGroup(frontRight, rearRight  );        
 
         arcadeDrive = new DifferentialDrive(leftMotors, rightMotors);
+        arcadeDrive.setSafetyEnabled(false);
     }
 
     @Override
