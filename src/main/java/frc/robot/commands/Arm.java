@@ -24,8 +24,8 @@ public class Arm extends Command {
     // Called repeatedly when this Command is scheduled to run
     @Override
     protected void execute() {
-        double rTrigger = controller.getRawAxis(RB);
-        double lTrigger = controller.getRawAxis(LB);
+        double rTrigger = controller.getRawAxis(RT);
+        double lTrigger = controller.getRawAxis(LT);
         //If either axes is less than threshold don't use them.
         if(Math.abs(rTrigger) < threshold){
             rTrigger = 0;
@@ -37,14 +37,14 @@ public class Arm extends Command {
             lTrigger = 0;
             rTrigger = 0;
         }
-        Robot.driveSubsystem.drive(rTrigger, lTrigger);
+        Robot.armSubsystem.lift(rTrigger, lTrigger);
     }
 
     // Make this return true when this Command no longer needs to run execute()
     @Override
     protected boolean isFinished() {
-        if(controller.getRawAxis(LB)  < threshold  
-            && controller.getRawAxis(RB) < threshold){
+        if(controller.getRawAxis(LT)  < threshold  
+            && controller.getRawAxis(RT) < threshold){
                 return true;
         }
         return false;
