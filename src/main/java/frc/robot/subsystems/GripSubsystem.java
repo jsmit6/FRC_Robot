@@ -28,7 +28,7 @@ public class GripSubsystem extends Subsystem {
         leftGripSol = new DoubleSolenoid(leftGripSolForwardChannel, leftGripSolBackwardChannel);
         rightGripSol = new DoubleSolenoid(rightGripSolForwardChannel, rightGripSolBackwardChannel);
 
-        isSqueezed = false;
+        isSqueezed = true;
     }
 
     @Override
@@ -48,27 +48,21 @@ public class GripSubsystem extends Subsystem {
 
     public void squeeze(){
         if(!isSqueezed){
-            isSqueezed = true;
-            (new Thread(() -> {
-                    stop();
-                    leftGripSol.set(Value.kForward);
-                    rightGripSol.set(Value.kForward);
-                    Timer.delay(1);
-                    stop();
-            })).start();
-        }
+            stop();
+            leftGripSol.set(Value.kForward);
+            rightGripSol.set(Value.kForward);
+            Timer.delay(1);
+            stop();
+        }    
     }
 
     public void unsqueeze(){
         if(isSqueezed){
-            isSqueezed = false;
-            (new Thread(() -> {
-                    stop();
-                    leftGripSol.set(Value.kReverse);
-                    rightGripSol.set(Value.kReverse);
-                    Timer.delay(1);
-                    stop();
-            })).start();
+            stop();
+            leftGripSol.set(Value.kReverse);
+            rightGripSol.set(Value.kReverse);
+            Timer.delay(1);
+            stop();
         }
     }
 
