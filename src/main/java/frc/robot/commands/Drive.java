@@ -40,8 +40,8 @@ public class Drive extends Command {
     // Make this return true when this Command no longer needs to run execute()
     @Override
     protected boolean isFinished() {
-        if(controller.getRawAxis(LeftJoystickY)  < threshold  
-            && controller.getRawAxis(RightJoystickX) < threshold){
+        if(Math.abs(controller.getRawAxis(LeftJoystickY))  < threshold  
+            && Math.abs(controller.getRawAxis(RightJoystickX)) < threshold){
                 return true;
         }
         return false;
