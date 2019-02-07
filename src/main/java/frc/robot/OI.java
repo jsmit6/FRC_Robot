@@ -19,19 +19,19 @@ public class OI {
 
   public static Joystick xboxController;
 
-  public static JoystickButton squeezeGrip;
-  public static JoystickButton unsqueezeGrip;
+  public static JoystickButton squeezeGripButton;
+  public static JoystickButton unsqueezeGripButton;
 
   public OI(){
     if(xboxController == null){
       xboxController = new Joystick(0);
     }
 
-    squeezeGrip = new JoystickButton(xboxController, XBoxControllerMap.LB);
-    squeezeGrip.whenPressed(new ControlGripCommand(GripAction.SQUEEZE));
+    squeezeGripButton = new JoystickButton(xboxController, XBoxControllerMap.LB);
+    squeezeGripButton.whenPressed(new ControlGripCommand(GripAction.SQUEEZE));
 
-    unsqueezeGrip = new JoystickButton(xboxController, XBoxControllerMap.RB);
-    unsqueezeGrip.whenPressed(new ControlGripCommand(GripAction.UNSQUEEZE));
+    unsqueezeGripButton = new JoystickButton(xboxController, XBoxControllerMap.RB);
+    unsqueezeGripButton.whenPressed(new ControlGripCommand(GripAction.UNSQUEEZE));
   }
   //// CREATING BUTTONS
   // One type of button is a joystick button which is any button on a
