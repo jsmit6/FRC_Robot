@@ -7,6 +7,9 @@
 
 package frc.robot;
 import edu.wpi.first.wpilibj.Joystick;
+import edu.wpi.first.wpilibj.buttons.JoystickButton;
+import frc.robot.commands.ControlGripCommand;
+import frc.robot.commands.GripAction;
 /**
  * This class is the glue that binds the controls on the physical operator
  * interface to the commands and command groups that allow control of the robot.
@@ -16,10 +19,19 @@ public class OI {
 
   public static Joystick xboxController;
 
+  public static JoystickButton squeezeGrip;
+  public static JoystickButton unsqueezeGrip;
+
   public OI(){
     if(xboxController == null){
       xboxController = new Joystick(0);
     }
+
+    squeezeGrip = new JoystickButton(xboxController, XBoxControllerMap.LB);
+    squeezeGrip.whenPressed(new ControlGripCommand(GripAction.SQUEEZE));
+
+    unsqueezeGrip = new JoystickButton(xboxController, XBoxControllerMap.RB);
+    unsqueezeGrip.whenPressed(new ControlGripCommand(GripAction.UNSQUEEZE));
   }
   //// CREATING BUTTONS
   // One type of button is a joystick button which is any button on a
