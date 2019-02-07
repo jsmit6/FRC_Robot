@@ -13,6 +13,7 @@ import edu.wpi.first.wpilibj.command.Scheduler;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import frc.robot.subsystems.DriveSubsystem;
+import frc.robot.subsystems.GripSubsystem;
 import frc.robot.subsystems.ArmSubsystem;
 
 /**
@@ -25,6 +26,7 @@ import frc.robot.subsystems.ArmSubsystem;
 public class Robot extends TimedRobot {
   public static DriveSubsystem driveSubsystem = new DriveSubsystem();
   public static ArmSubsystem armSubsystem = new ArmSubsystem();
+  public static GripSubsystem gripSubsystem = new GripSubsystem();
   public static OI m_oi;
 
   Command m_autonomousCommand;
