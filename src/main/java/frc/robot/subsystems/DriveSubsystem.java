@@ -9,6 +9,8 @@ import edu.wpi.first.wpilibj.command.Subsystem;
 import edu.wpi.first.wpilibj.drive.DifferentialDrive;
 import frc.robot.commands.Drive;
 
+import static frc.robot.RobotMap.*;
+
 
 public class DriveSubsystem extends Subsystem {
 
@@ -24,19 +26,19 @@ public class DriveSubsystem extends Subsystem {
 
 
     public DriveSubsystem() {
-        frontLeft = new CANSparkMax(1, MotorType.kBrushless);
+        frontLeft = new CANSparkMax(frontLeftMotorID, MotorType.kBrushless);
         frontLeft.setInverted(false);
         
-        rearLeft = new CANSparkMax(2, MotorType.kBrushless);
+        rearLeft = new CANSparkMax(rearLeftMotorID, MotorType.kBrushless);
         rearLeft.setInverted(false);
         
         leftMotors = new SpeedControllerGroup(frontLeft, rearLeft  );
         
         
-        frontRight = new CANSparkMax(3, MotorType.kBrushless);
+        frontRight = new CANSparkMax(frontRightMotorID, MotorType.kBrushless);
         frontRight.setInverted(false);
         
-        rearRight = new CANSparkMax(4, MotorType.kBrushless);
+        rearRight = new CANSparkMax(rearRightMotorId, MotorType.kBrushless);
         rearRight.setInverted(false);
         
         rightMotors = new SpeedControllerGroup(frontRight, rearRight  );        
