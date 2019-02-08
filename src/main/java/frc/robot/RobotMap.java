@@ -14,7 +14,7 @@ public class RobotMap {
 
   /* Right Drive Motors */
   public static final int frontRightMotorID = 3;
-  public static final int rearRightMotorId = 4;
+  public static final int rearRightMotorID = 4;
   /*************END DRIVE SUBSYSTEM**************/
 
   /**********ARM SUBSYSTEM*********************/

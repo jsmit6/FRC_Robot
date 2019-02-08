@@ -13,7 +13,7 @@ import static frc.robot.RobotMap.frontLeftMotorID;
 import static frc.robot.RobotMap.rearLeftMotorID;
 
 import static frc.robot.RobotMap.frontRightMotorID;
-import static frc.robot.RobotMap.rearRightMotorId;
+import static frc.robot.RobotMap.rearRightMotorID;
 
 
 public class DriveSubsystem extends Subsystem {
@@ -42,7 +42,7 @@ public class DriveSubsystem extends Subsystem {
         frontRight = new CANSparkMax(frontRightMotorID, MotorType.kBrushless);
         frontRight.setInverted(false);
         
-        rearRight = new CANSparkMax(rearRightMotorId, MotorType.kBrushless);
+        rearRight = new CANSparkMax(rearRightMotorID, MotorType.kBrushless);
         rearRight.setInverted(false);
         
         rightMotors = new SpeedControllerGroup(frontRight, rearRight  );        
