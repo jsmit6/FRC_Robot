@@ -23,9 +23,7 @@ public class OI {
   public static JoystickButton unsqueezeGripButton;
 
   public OI(){
-    if(xboxController == null){
-      xboxController = new Joystick(0);
-    }
+    xboxController = new Joystick(0);
 
     squeezeGripButton = new JoystickButton(xboxController, XBoxControllerMap.LB);
     squeezeGripButton.whenPressed(new ControlGripCommand(GripAction.SQUEEZE));
