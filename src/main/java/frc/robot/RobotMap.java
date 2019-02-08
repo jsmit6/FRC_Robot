@@ -17,4 +17,12 @@ public class RobotMap {
 
   /* Arm Motor */
   public static final int armMotorID = 5;
+
+  /* Left Grip Pneumatics */
+  public static int leftGripForwardChannel = 1;
+  public static int leftGripBackwardChannel = 2;
+
+  /* Right Grip Pneumatics */
+  public static int rightGripForwardChannel = 3;
+  public static int rightGripBackwardChannel = 4;
 }
