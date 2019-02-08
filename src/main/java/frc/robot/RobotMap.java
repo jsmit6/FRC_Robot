@@ -7,6 +7,7 @@ package frc.robot;
  * floating around.
  */
 public class RobotMap {
+  /**************DRIVE SUBSYSTEM****************/
   /* Left Drive Motors */
   public static final int frontLeftMotorID = 1;
   public static final int rearLeftMotorID = 2;
@@ -14,9 +15,15 @@ public class RobotMap {
   /* Right Drive Motors */
   public static final int frontRightMotorID = 3;
   public static final int rearRightMotorId = 4;
+  /*************END DRIVE SUBSYSTEM**************/
 
+  /**********ARM SUBSYSTEM*********************/
   /* Arm Motor */
   public static final int armMotorID = 5;
+
+  /* Arm Digital Sensors */
+  public static final int armUpSwitchID = 0;
+  public static final int armDownSwitchID = 1;
 
   /* Left Grip Pneumatics */
   public static int leftGripForwardChannel = 1;
@@ -25,4 +32,5 @@ public class RobotMap {
   /* Right Grip Pneumatics */
   public static int rightGripForwardChannel = 3;
   public static int rightGripBackwardChannel = 4;
+  /************END ARM SUBSYSTEM******************/
 }
