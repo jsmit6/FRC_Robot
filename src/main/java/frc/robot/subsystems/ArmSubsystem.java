@@ -6,11 +6,13 @@ import com.revrobotics.CANSparkMaxLowLevel.MotorType;
 
 import frc.robot.commands.Arm;
 
+import static frc.robot.RobotMap.*;
+
 public class ArmSubsystem extends Subsystem {
 
     private CANSparkMax liftMotor;
     public ArmSubsystem() {
-        liftMotor = new CANSparkMax(5, MotorType.kBrushless);
+        liftMotor = new CANSparkMax(armMotorID, MotorType.kBrushless);
         liftMotor.setInverted(false);
     }
 
