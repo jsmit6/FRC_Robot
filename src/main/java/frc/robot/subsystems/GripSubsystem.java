@@ -16,12 +16,7 @@ public class GripSubsystem extends Subsystem {
 
     private boolean isSqueezed;
 
-    private GripSubsystem gripInstance;
-
     public GripSubsystem() {
-        if(gripInstance == null){
-            gripInstance = this;
-        }
         leftGripSol = new DoubleSolenoid(leftGripForwardChannel, leftGripBackwardChannel);
         rightGripSol = new DoubleSolenoid(rightGripForwardChannel, rightGripBackwardChannel);
 
