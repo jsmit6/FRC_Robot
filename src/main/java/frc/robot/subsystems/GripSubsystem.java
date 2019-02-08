@@ -6,16 +6,13 @@ import edu.wpi.first.wpilibj.DoubleSolenoid;
 import edu.wpi.first.wpilibj.DoubleSolenoid.Value;
 import edu.wpi.first.wpilibj.Timer;
 
+import static frc.robot.RobotMap.*;
 
 public class GripSubsystem extends Subsystem {
 
     private DoubleSolenoid leftGripSol;
-    private int leftGripSolForwardChannel;
-    private int leftGripSolBackwardChannel;
 
     private DoubleSolenoid rightGripSol;
-    private int rightGripSolForwardChannel;
-    private int rightGripSolBackwardChannel;
 
     private boolean isSqueezed;
 
@@ -25,8 +22,8 @@ public class GripSubsystem extends Subsystem {
         if(gripInstance == null){
             gripInstance = this;
         }
-        leftGripSol = new DoubleSolenoid(leftGripSolForwardChannel, leftGripSolBackwardChannel);
-        rightGripSol = new DoubleSolenoid(rightGripSolForwardChannel, rightGripSolBackwardChannel);
+        leftGripSol = new DoubleSolenoid(leftGripForwardChannel, leftGripBackwardChannel);
+        rightGripSol = new DoubleSolenoid(rightGripForwardChannel, rightGripBackwardChannel);
 
         isSqueezed = true;
     }
