@@ -6,7 +6,11 @@ import edu.wpi.first.wpilibj.DoubleSolenoid;
 import edu.wpi.first.wpilibj.DoubleSolenoid.Value;
 import edu.wpi.first.wpilibj.Timer;
 
-import static frc.robot.RobotMap.*;
+import static frc.robot.RobotMap.leftGripForwardChannel;
+import static frc.robot.RobotMap.leftGripBackwardChannel;
+
+import static frc.robot.RobotMap.rightGripForwardChannel;
+import static frc.robot.RobotMap.rightGripBackwardChannel;
 
 public class GripSubsystem extends Subsystem {
 

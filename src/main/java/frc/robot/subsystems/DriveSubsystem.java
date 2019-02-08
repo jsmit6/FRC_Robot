@@ -9,7 +9,11 @@ import edu.wpi.first.wpilibj.command.Subsystem;
 import edu.wpi.first.wpilibj.drive.DifferentialDrive;
 import frc.robot.commands.Drive;
 
-import static frc.robot.RobotMap.*;
+import static frc.robot.RobotMap.frontLeftMotorID;
+import static frc.robot.RobotMap.rearLeftMotorID;
+
+import static frc.robot.RobotMap.frontRightMotorID;
+import static frc.robot.RobotMap.rearRightMotorId;
 
 
 public class DriveSubsystem extends Subsystem {

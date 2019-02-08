@@ -6,7 +6,7 @@ import com.revrobotics.CANSparkMaxLowLevel.MotorType;
 
 import frc.robot.commands.Arm;
 
-import static frc.robot.RobotMap.*;
+import static frc.robot.RobotMap.armMotorID;
 
 public class ArmSubsystem extends Subsystem {
 
