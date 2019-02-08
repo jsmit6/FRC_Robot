@@ -10,13 +10,17 @@ import edu.wpi.first.wpilibj.command.Command;
 import frc.robot.OI;
 import frc.robot.Robot;
 
+import static frc.robot.RobotMap.armUpSwitchID;
+import static frc.robot.RobotMap.armDownSwitchID;
+
 public class Arm extends Command {
 
     private Joystick controller = OI.xboxController;
     private double threshold = 0.05;
 
-    DigitalInput upLimitSwitch = new DigitalInput(0);
-    DigitalInput downLimitSwitch = new DigitalInput(1);
+    DigitalInput upLimitSwitch = new DigitalInput(armUpSwitchID);
+    DigitalInput downLimitSwitch = new DigitalInput(armDownSwitchID);
+    
     Counter upCounter = new Counter(upLimitSwitch);
     Counter downCounter = new Counter(downLimitSwitch);
 
