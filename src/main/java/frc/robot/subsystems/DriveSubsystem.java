@@ -27,33 +27,38 @@ public class DriveSubsystem extends Subsystem {
     private SpeedControllerGroup rightMotors;
 
     private DifferentialDrive arcadeDrive;
+    public final boolean ENABLED;
 
+    public DriveSubsystem(boolean enabled) {
+        ENABLED = enabled;
+        if(enabled){
+            frontLeft = new CANSparkMax(frontLeftMotorID, MotorType.kBrushless);
+            frontLeft.setInverted(false);
+            
+            rearLeft = new CANSparkMax(rearLeftMotorID, MotorType.kBrushless);
+            rearLeft.setInverted(false);
+            
+            leftMotors = new SpeedControllerGroup(frontLeft, rearLeft  );
+            
+            
+            frontRight = new CANSparkMax(frontRightMotorID, MotorType.kBrushless);
+            frontRight.setInverted(false);
+            
+            rearRight = new CANSparkMax(rearRightMotorID, MotorType.kBrushless);
+            rearRight.setInverted(false);
+            
+            rightMotors = new SpeedControllerGroup(frontRight, rearRight  );        
 
-    public DriveSubsystem() {
-        frontLeft = new CANSparkMax(frontLeftMotorID, MotorType.kBrushless);
-        frontLeft.setInverted(false);
-        
-        rearLeft = new CANSparkMax(rearLeftMotorID, MotorType.kBrushless);
-        rearLeft.setInverted(false);
-        
-        leftMotors = new SpeedControllerGroup(frontLeft, rearLeft  );
-        
-        
-        frontRight = new CANSparkMax(frontRightMotorID, MotorType.kBrushless);
-        frontRight.setInverted(false);
-        
-        rearRight = new CANSparkMax(rearRightMotorID, MotorType.kBrushless);
-        rearRight.setInverted(false);
-        
-        rightMotors = new SpeedControllerGroup(frontRight, rearRight  );        
-
-        arcadeDrive = new DifferentialDrive(leftMotors, rightMotors);
-        arcadeDrive.setSafetyEnabled(false);
+            arcadeDrive = new DifferentialDrive(leftMotors, rightMotors);
+            arcadeDrive.setSafetyEnabled(false);
+        }
     }
 
     @Override
     public void initDefaultCommand() {
-        setDefaultCommand(new Drive());
+        if(ENABLED){
+            setDefaultCommand(new Drive());
+        }
     }
 
     @Override

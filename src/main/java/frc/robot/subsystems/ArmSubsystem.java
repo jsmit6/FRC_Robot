@@ -11,14 +11,21 @@ import static frc.robot.RobotMap.armMotorID;
 public class ArmSubsystem extends Subsystem {
 
     private CANSparkMax liftMotor;
-    public ArmSubsystem() {
-        liftMotor = new CANSparkMax(armMotorID, MotorType.kBrushless);
-        liftMotor.setInverted(false);
+    public final boolean ENABLED;
+
+    public ArmSubsystem(boolean enabled) {
+        ENABLED = enabled;
+        if(enabled){
+            liftMotor = new CANSparkMax(armMotorID, MotorType.kBrushless);
+            liftMotor.setInverted(false);
+        }
     }
 
     @Override
     public void initDefaultCommand() {
-        setDefaultCommand(new Arm());
+        if(ENABLED){
+            setDefaultCommand(new Arm());
+        }
     }
 
     @Override

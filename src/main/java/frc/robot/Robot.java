@@ -17,9 +17,10 @@ import frc.robot.subsystems.ArmSubsystem;
  * project.
  */
 public class Robot extends TimedRobot {
-  public static DriveSubsystem driveSubsystem = new DriveSubsystem();
-  public static ArmSubsystem armSubsystem = new ArmSubsystem();
-  public static GripSubsystem gripSubsystem = new GripSubsystem();
+
+  public static DriveSubsystem driveSubsystem = new DriveSubsystem(true);
+  public static ArmSubsystem armSubsystem = new ArmSubsystem(false);
+  public static GripSubsystem gripSubsystem = new GripSubsystem(false);
   public static OI m_oi;
 
   Command m_autonomousCommand;

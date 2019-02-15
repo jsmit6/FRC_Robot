@@ -20,11 +20,15 @@ public class GripSubsystem extends Subsystem {
 
     private boolean isSqueezed;
 
-    public GripSubsystem() {
-        leftGripSol = new DoubleSolenoid(leftGripForwardChannel, leftGripBackwardChannel);
-        rightGripSol = new DoubleSolenoid(rightGripForwardChannel, rightGripBackwardChannel);
+    public final boolean ENABLED;
+    public GripSubsystem(boolean enabled) {
+        ENABLED = enabled;
+        if(enabled){
+            leftGripSol = new DoubleSolenoid(leftGripForwardChannel, leftGripBackwardChannel);
+            rightGripSol = new DoubleSolenoid(rightGripForwardChannel, rightGripBackwardChannel);
 
-        isSqueezed = true;
+            isSqueezed = true;
+        }
     }
 
     @Override
