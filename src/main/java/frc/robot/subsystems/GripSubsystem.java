@@ -23,7 +23,7 @@ public class GripSubsystem extends Subsystem {
     public final boolean ENABLED;
     public GripSubsystem(boolean enabled) {
         ENABLED = enabled;
-        if(enabled){
+        if(ENABLED){
             leftGripSol = new DoubleSolenoid(leftGripForwardChannel, leftGripBackwardChannel);
             rightGripSol = new DoubleSolenoid(rightGripForwardChannel, rightGripBackwardChannel);
 
