@@ -18,6 +18,9 @@ import static frc.robot.RobotMap.rearRightMotorID;
 
 public class DriveSubsystem extends Subsystem {
 
+    private final double ROTATION_SPEED = 0.5;
+    private final double Y_SPEED = 1;
+
     private CANSparkMax frontLeft;
     private CANSparkMax rearLeft;
     private SpeedControllerGroup leftMotors;
@@ -68,7 +71,7 @@ public class DriveSubsystem extends Subsystem {
     }
 
     public void drive(double xAxis, double yAxis){
-        arcadeDrive.arcadeDrive(-yAxis, xAxis);
+        arcadeDrive.arcadeDrive(-yAxis * Y_SPEED, xAxis * ROTATION_SPEED);
     }
 
     public void stop(){
