@@ -33,4 +33,9 @@ public class RobotMap {
   public static int rightGripForwardChannel = 3;
   public static int rightGripBackwardChannel = 4;
   /************END ARM SUBSYSTEM******************/
+
+  /**********WRIST SUBSYSTEM*******************/
+  public static final int wristMotorID = 0;
+  public static final int shootMotorID = 1;
+  /**********END WRIST SUBSYSTEM***************/
 }
