@@ -5,9 +5,11 @@ import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.command.Scheduler;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
+import frc.robot.subsystems.ArmSubsystem;
 import frc.robot.subsystems.DriveSubsystem;
 import frc.robot.subsystems.GripSubsystem;
-import frc.robot.subsystems.ArmSubsystem;
+import frc.robot.subsystems.ShootSubsystem;
+import frc.robot.subsystems.WristSubsystem;
 
 /**
  * The VM is configured to automatically run this class, and to call the
@@ -21,6 +23,8 @@ public class Robot extends TimedRobot {
   public static DriveSubsystem driveSubsystem = new DriveSubsystem(true);
   public static ArmSubsystem armSubsystem = new ArmSubsystem(false);
   public static GripSubsystem gripSubsystem = new GripSubsystem(false);
+  public static WristSubsystem wristSubsystem = new WristSubsystem(true);
+  public static ShootSubsystem shootSubsystem = new ShootSubsystem(true);
   public static OI m_oi;
 
   Command m_autonomousCommand;
