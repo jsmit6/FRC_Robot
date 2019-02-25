@@ -31,7 +31,7 @@ public class ShootSubsystem extends Subsystem {
     }
 
     public void output(double shoot){
-        shootMotor.set(shoot);
+        shootMotor.set(-shoot);
     }
 
     public void input(double intake){

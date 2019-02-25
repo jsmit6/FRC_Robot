@@ -28,7 +28,7 @@ public class Wrist extends Command {
         double yAxis = controller.getRawAxis(RightJoystickY);
 
         if(Math.abs(yAxis) > threshold){
-            Robot.wristSubsystem.rotate(yAxis / 2);
+            Robot.wristSubsystem.rotate(-yAxis / 2);
         }
     }
 
