@@ -22,7 +22,7 @@ public class Robot extends TimedRobot {
 
   public static DriveSubsystem driveSubsystem = new DriveSubsystem(true);
   public static ArmSubsystem armSubsystem = new ArmSubsystem(true);
-  public static GripSubsystem gripSubsystem = new GripSubsystem(false);
+  public static GripSubsystem gripSubsystem = new GripSubsystem(true);
   public static WristSubsystem wristSubsystem = new WristSubsystem(true);
   public static ShootSubsystem shootSubsystem = new ShootSubsystem(true);
   public static OI m_oi;
