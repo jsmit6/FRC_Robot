@@ -17,7 +17,7 @@ public class GripSubsystem extends Subsystem {
 
     //private DoubleSolenoid rightGripSol;
 
-    private boolean isSqueezed;
+    private Value isSqueezed;
 
     public final boolean ENABLED;
     public GripSubsystem(boolean enabled) {
@@ -26,7 +26,7 @@ public class GripSubsystem extends Subsystem {
             leftGripSol = new DoubleSolenoid(RobotMap.gripForwardChannel, RobotMap.gripBackwardChannel);
             //rightGripSol = new DoubleSolenoid(rightGripForwardChannel, rightGripBackwardChannel);
 
-            isSqueezed = true;
+            isSqueezed = leftGripSol.get();
         }
     }
 
@@ -42,28 +42,28 @@ public class GripSubsystem extends Subsystem {
     }
 
     public boolean isSqueezing(){
-        return isSqueezed;
+        return isSqueezed == Value.kForward;
     }
 
     public void squeeze(){
-        if(!isSqueezed){
+        if((leftGripSol.get() == Value.kReverse)){
             stop();
             leftGripSol.set(Value.kForward);
             //rightGripSol.set(Value.kForward);
             Timer.delay(1);
             stop();
-            isSqueezed = !isSqueezed;
+            isSqueezed = Value.kForward;
         }    
     }
 
     public void unsqueeze(){
-        if(isSqueezed){
+        if(leftGripSol.get() == Value.kForward){
             stop();
             leftGripSol.set(Value.kReverse);
             //rightGripSol.set(Value.kReverse);
             Timer.delay(1);
             stop();
-            isSqueezed = !isSqueezed;
+            isSqueezed = Value.kReverse;
         }
     }
 
