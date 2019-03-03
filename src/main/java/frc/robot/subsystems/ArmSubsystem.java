@@ -45,16 +45,10 @@ public class ArmSubsystem extends Subsystem {
         double encoderOutput = encoder.getPosition();
         boolean armLifting = (rTrigger - lTrigger) < 0? false: true;
 
-        if(encoderOutput < ARM_MIN_VALUE && !armLifting){
-            System.out.println("BLOCKING LOWER " + encoderOutput + " : " + (rTrigger - lTrigger));
-            liftMotor.stopMotor();
-        }else if (encoderOutput >  ARM_MAX_VALUE && armLifting){
-            System.out.println("BLOCKING RAISE " + encoderOutput + " : " + (rTrigger - lTrigger));
-            liftMotor.stopMotor();
-        }else{
+     
             System.out.println(encoderOutput + " : " + (rTrigger - lTrigger));
             liftMotor.set(rTrigger - lTrigger);
-        }
+        
         
     }
 
