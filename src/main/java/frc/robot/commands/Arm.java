@@ -15,7 +15,7 @@ import static frc.robot.RobotMap.armDownSwitchID;
 
 public class Arm extends Command {
 
-    private Joystick controller = OI.xboxController;
+    private Joystick controller = OI.xboxControllerD1;
     private double threshold = 0.05;
 
     DigitalInput upLimitSwitch = new DigitalInput(armUpSwitchID);

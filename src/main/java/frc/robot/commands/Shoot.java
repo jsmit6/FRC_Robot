@@ -9,7 +9,7 @@ import frc.robot.Robot;
 
 public class Shoot extends Command {
 
-    private Joystick controller = OI.xboxController;
+    private Joystick controller = OI.xboxControllerD1;
 
     public Shoot() {
         requires(Robot.shootSubsystem);

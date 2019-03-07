@@ -10,7 +10,7 @@ import static frc.robot.XBoxControllerMap.*;
 
 public class Drive extends Command {
 
-    private Joystick controller = OI.xboxController;
+    private Joystick controller = OI.xboxControllerD1;
     private double threshold = 0.2;
 
     public Drive() {

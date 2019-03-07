@@ -13,6 +13,7 @@ public interface XBoxControllerMap {
 	public static final int L3 = 9;
 	public static final int R3 = 10;
 	public static final int BACK = 7;
+	public static final int SELECT = BACK;
 	public static final int START = 8;
 	//*******************************//
 	
