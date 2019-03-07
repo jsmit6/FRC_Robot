@@ -44,4 +44,8 @@ public class RobotMap {
   public static final int shootMotorID = 1;
 
   /**********END WRIST SUBSYSTEM***************/
+
+  /**********SENSORS*******************/
+  public static final int armPotentiometer = 0;
+  /**********END SENSORS***************/
 }

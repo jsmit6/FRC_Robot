@@ -8,21 +8,30 @@ import edu.wpi.first.wpilibj.Timer;
 
 import frc.robot.RobotMap;
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> master
 public class GripSubsystem extends Subsystem {
 
     private DoubleSolenoid leftGripSol;
 
 
-    private Value isSqueezed;
+    private boolean isSqueezed;
+
 
     public final boolean ENABLED;
     public GripSubsystem(boolean enabled) {
         ENABLED = enabled;
         if(ENABLED){
             leftGripSol = new DoubleSolenoid(RobotMap.gripForwardChannel, RobotMap.gripBackwardChannel);
+<<<<<<< HEAD
             
             isSqueezed = leftGripSol.get();
+=======
+
+            isSqueezed = true;
+>>>>>>> master
         }
     }
 
@@ -33,31 +42,38 @@ public class GripSubsystem extends Subsystem {
 
     @Override
     public void periodic() {
-        // Put code here to be run every loop
 
     }
 
     public boolean isSqueezing(){
-        return isSqueezed == Value.kForward;
+        return isSqueezed;
     }
 
     public void squeeze(){
+<<<<<<< HEAD
         if((leftGripSol.get() != Value.kForward)){
+=======
+        if(!isSqueezed){
+>>>>>>> master
             stop();
             leftGripSol.set(Value.kForward);
             Timer.delay(1);
             stop();
-            isSqueezed = Value.kForward;
+            isSqueezed = !isSqueezed;
         }    
     }
 
     public void unsqueeze(){
+<<<<<<< HEAD
         if(leftGripSol.get() != Value.kReverse){
+=======
+        if(isSqueezed){
+>>>>>>> master
             stop();
             leftGripSol.set(Value.kReverse);
             Timer.delay(1);
             stop();
-            isSqueezed = Value.kReverse;
+            isSqueezed = !isSqueezed;
         }
     }
 
