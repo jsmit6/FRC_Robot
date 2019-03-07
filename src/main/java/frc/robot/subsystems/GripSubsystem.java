@@ -46,6 +46,7 @@ public class GripSubsystem extends Subsystem {
             leftGripSol.set(Value.kForward);
             Timer.delay(1);
             stop();
+            isSqueezed = leftGripSol.get();
         }    
     }
 
@@ -55,6 +56,7 @@ public class GripSubsystem extends Subsystem {
             leftGripSol.set(Value.kReverse);
             Timer.delay(1);
             stop();
+            isSqueezed = leftGripSol.get();
         }
     }
 

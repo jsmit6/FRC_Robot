@@ -37,7 +37,7 @@ public class Shoot extends Command {
     // Make this return true when this Command no longer needs to run execute()
     @Override
     protected boolean isFinished() {
-        if(!controller.getRawButton(A) && !controller.getRawButton(X)){
+        if(!controller.getRawButton(A) && !controller.getRawButton(Y)){
                 return true;
         }
         return false;

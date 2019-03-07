@@ -46,13 +46,13 @@ public class ArmSubsystem extends Subsystem {
 
     public void lift(double lTrigger, double rTrigger, boolean override){
         int potValue = (int) (pot.get() * 100);
-        System.out.println(potValue + " OVERIDE");
+        System.out.println(potValue + " " + override);
 
         // 19 hard stop in lift
-        if(potValue <= MAX_RAISE_POT  || (potValue <= OVERRIDE_MAX_RAISE_POT && override)){
+        if(potValue <= 19  ){
             // Stop lifting
             liftMotor.set(lTrigger);
-        }else if(potValue >= MIN_LOWER_POT){
+        }else if(potValue >= 31){
             // Stop Lowering
             liftMotor.set(-rTrigger*.5);
         }else{
