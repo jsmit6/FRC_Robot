@@ -8,14 +8,11 @@ import edu.wpi.first.wpilibj.Timer;
 
 import frc.robot.RobotMap;
 
-//import static frc.robot.RobotMap.rightGripForwardChannel;
-//import static frc.robot.RobotMap.rightGripBackwardChannel;
 
 public class GripSubsystem extends Subsystem {
 
     private DoubleSolenoid leftGripSol;
 
-    //private DoubleSolenoid rightGripSol;
 
     private Value isSqueezed;
 
@@ -24,8 +21,7 @@ public class GripSubsystem extends Subsystem {
         ENABLED = enabled;
         if(ENABLED){
             leftGripSol = new DoubleSolenoid(RobotMap.gripForwardChannel, RobotMap.gripBackwardChannel);
-            //rightGripSol = new DoubleSolenoid(rightGripForwardChannel, rightGripBackwardChannel);
-
+            
             isSqueezed = leftGripSol.get();
         }
     }
@@ -49,7 +45,6 @@ public class GripSubsystem extends Subsystem {
         if((leftGripSol.get() == Value.kReverse)){
             stop();
             leftGripSol.set(Value.kForward);
-            //rightGripSol.set(Value.kForward);
             Timer.delay(1);
             stop();
             isSqueezed = Value.kForward;
@@ -60,7 +55,6 @@ public class GripSubsystem extends Subsystem {
         if(leftGripSol.get() == Value.kForward){
             stop();
             leftGripSol.set(Value.kReverse);
-            //rightGripSol.set(Value.kReverse);
             Timer.delay(1);
             stop();
             isSqueezed = Value.kReverse;
@@ -69,6 +63,5 @@ public class GripSubsystem extends Subsystem {
 
     public void stop(){
         leftGripSol.set(Value.kOff);
-        //rightGripSol.set(Value.kOff);
     }
 }
