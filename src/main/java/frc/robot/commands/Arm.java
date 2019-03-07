@@ -2,6 +2,7 @@ package frc.robot.commands;
 
 import static frc.robot.XBoxControllerMap.LT;
 import static frc.robot.XBoxControllerMap.RT;
+import static frc.robot.XBoxControllerMap.X;
 
 import edu.wpi.first.wpilibj.Counter;
 import edu.wpi.first.wpilibj.DigitalInput;
@@ -15,7 +16,7 @@ import static frc.robot.RobotMap.armDownSwitchID;
 
 public class Arm extends Command {
 
-    private Joystick controller = OI.xboxControllerD1;
+    private Joystick controller = OI.xboxControllerD2;
     private double threshold = 0.05;
 
     DigitalInput upLimitSwitch = new DigitalInput(armUpSwitchID);
@@ -37,8 +38,9 @@ public class Arm extends Command {
     // Called repeatedly when this Command is scheduled to run
     @Override
     protected void execute() {
-        double rTrigger = controller.getRawAxis(RT);
-        double lTrigger = controller.getRawAxis(LT);
+        double rTrigger = controller.getRawAxis(RT);//Down
+        double lTrigger = controller.getRawAxis(LT);//UP
+        boolean override = controller.getRawButton(X);
         //If either axes is less than threshold don't use them.
         if(Math.abs(rTrigger) < threshold || isUpSwitchSet()){
             rTrigger = 0;
@@ -50,14 +52,14 @@ public class Arm extends Command {
             lTrigger = 0;
             rTrigger = 0;
         }
-        Robot.armSubsystem.lift(rTrigger, lTrigger);
+        Robot.armSubsystem.lift(lTrigger, rTrigger, override);
     }
 
     // Make this return true when this Command no longer needs to run execute()
     @Override
     protected boolean isFinished() {
-        if(controller.getRawAxis(LT)  < threshold  
-            && controller.getRawAxis(RT) < threshold){
+        if(Math.abs(controller.getRawAxis(LT))  < threshold  
+            && Math.abs(controller.getRawAxis(RT)) < threshold){
                 return true;
         }
         return false;

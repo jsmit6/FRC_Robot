@@ -9,7 +9,7 @@ import frc.robot.Robot;
 
 public class Shoot extends Command {
 
-    private Joystick controller = OI.xboxControllerD1;
+    private Joystick controller = OI.xboxControllerD2;
 
     public Shoot() {
         requires(Robot.shootSubsystem);
@@ -24,8 +24,8 @@ public class Shoot extends Command {
     // Called repeatedly when this Command is scheduled to run
     @Override
     protected void execute() {
-        boolean input = controller.getRawButton(A);
-        boolean output = controller.getRawButton(X);
+        boolean input = controller.getRawButton(Y);
+        boolean output = controller.getRawButton(A);
 
         if(input){
             Robot.shootSubsystem.input(1.0);

@@ -9,7 +9,7 @@ import frc.robot.Robot;
 
 public class Wrist extends Command {
 
-    private Joystick controller = OI.xboxControllerD1;
+    private Joystick controller = OI.xboxControllerD2;
     private double threshold = 0.05;
 
     public Wrist() {
