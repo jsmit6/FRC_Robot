@@ -42,7 +42,7 @@ public class GripSubsystem extends Subsystem {
     }
 
     public void squeeze(){
-        if((leftGripSol.get() == Value.kReverse)){
+        if((leftGripSol.get() != Value.kForward)){
             stop();
             leftGripSol.set(Value.kForward);
             Timer.delay(1);
@@ -52,7 +52,7 @@ public class GripSubsystem extends Subsystem {
     }
 
     public void unsqueeze(){
-        if(leftGripSol.get() == Value.kForward){
+        if(leftGripSol.get() != Value.kReverse){
             stop();
             leftGripSol.set(Value.kReverse);
             Timer.delay(1);
