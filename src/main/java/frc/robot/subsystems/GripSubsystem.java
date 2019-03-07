@@ -52,7 +52,11 @@ public class GripSubsystem extends Subsystem {
             //rightGripSol.set(Value.kForward);
             Timer.delay(1);
             stop();
+<<<<<<< HEAD
             isSqueezed = Value.kForward;
+=======
+            isSqueezed = true;
+>>>>>>> parent of cb0d57b... Another attempt at fixing isSqueezed
         }    
     }
 
@@ -63,7 +67,11 @@ public class GripSubsystem extends Subsystem {
             //rightGripSol.set(Value.kReverse);
             Timer.delay(1);
             stop();
+<<<<<<< HEAD
             isSqueezed = Value.kReverse;
+=======
+            isSqueezed = false;
+>>>>>>> parent of cb0d57b... Another attempt at fixing isSqueezed
         }
     }
 
