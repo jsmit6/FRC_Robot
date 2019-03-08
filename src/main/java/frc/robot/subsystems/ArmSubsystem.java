@@ -18,9 +18,9 @@ public class ArmSubsystem extends Subsystem {
     private Potentiometer pot = new AnalogPotentiometer(RobotMap.armPotentiometer);
 
 
-    private final int MAX_RAISE_POT = 24;
-    private final int MIN_LOWER_POT = 31;
-    private final int OVERRIDE_MAX_RAISE_POT = 19;
+    private final int MAX_ARM_RAISE_POT = 24;
+    private final int MIN_ARM_LOWER_POT = 31;
+    private final int OVERRIDE_MAX_ARM_RAISE_POT = 19;
 
 
     public ArmSubsystem(boolean enabled) {
@@ -47,10 +47,8 @@ public class ArmSubsystem extends Subsystem {
     public void lift(double lTrigger, double rTrigger, boolean override){
         int potValue = (int) (pot.get() * 100);
         System.out.println(potValue + " " + override);
-
-        // 19 hard stop in lift
-        if(potValue <= 19  ){
-            // Stop lifting
+        
+        if(potValue <= MIN_ARM_LOWER_POT && override && potValue >= OVERRIDE_MAX_ARM_RAISE_POT){
             liftMotor.set(lTrigger);
         }else if(potValue >= 31){
             // Stop Lowering
