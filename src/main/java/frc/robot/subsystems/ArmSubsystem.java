@@ -54,7 +54,7 @@ public class ArmSubsystem extends Subsystem {
             liftMotor.set(lTrigger);
         }else if(potValue >= 31){
             // Stop Lowering
-            liftMotor.set(-rTrigger*.5);
+            liftMotor.set(-rTrigger);
         }else{
             liftMotor.set((lTrigger - rTrigger));
         }
