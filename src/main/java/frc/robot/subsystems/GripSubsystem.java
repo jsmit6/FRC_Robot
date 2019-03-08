@@ -1,17 +1,13 @@
 package frc.robot.subsystems;
 
-import edu.wpi.first.wpilibj.command.Subsystem;
-
 import edu.wpi.first.wpilibj.DoubleSolenoid;
 import edu.wpi.first.wpilibj.DoubleSolenoid.Value;
-import edu.wpi.first.wpilibj.Timer;
-
+import edu.wpi.first.wpilibj.command.Subsystem;
 import frc.robot.RobotMap;
 
 public class GripSubsystem extends Subsystem {
 
-    private DoubleSolenoid leftGripSol;
-
+    private DoubleSolenoid gripSol;
 
     private DoubleSolenoid.Value isSqueezed;
 
@@ -20,9 +16,9 @@ public class GripSubsystem extends Subsystem {
     public GripSubsystem(boolean enabled) {
         ENABLED = enabled;
         if(ENABLED){
-            leftGripSol = new DoubleSolenoid(RobotMap.gripForwardChannel, RobotMap.gripBackwardChannel);
+            gripSol = new DoubleSolenoid(RobotMap.gripForwardChannel, RobotMap.gripBackwardChannel);
             
-            isSqueezed = leftGripSol.get();
+            isSqueezed = gripSol.get();
         }
     }
 
@@ -41,26 +37,19 @@ public class GripSubsystem extends Subsystem {
     }
 
     public void squeeze(){
-        if((leftGripSol.get() != Value.kForward)){
-            stop();
-            leftGripSol.set(Value.kForward);
-            Timer.delay(1);
-            stop();
-            isSqueezed = leftGripSol.get();
+        if((gripSol.get() != Value.kForward)){
+            gripSol.set(Value.kForward);
+            isSqueezed = gripSol.get();
         }    
     }
 
     public void unsqueeze(){
-        if(leftGripSol.get() != Value.kReverse){
-            stop();
-            leftGripSol.set(Value.kReverse);
-            Timer.delay(1);
-            stop();
-            isSqueezed = leftGripSol.get();
+        if(gripSol.get() != Value.kReverse){
+            gripSol.set(Value.kReverse);
+            isSqueezed = gripSol.get();
         }
     }
-
     public void stop(){
-        leftGripSol.set(Value.kOff);
+        gripSol.set(Value.kOff);
     }
 }
