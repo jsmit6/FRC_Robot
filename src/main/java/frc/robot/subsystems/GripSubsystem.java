@@ -9,16 +9,12 @@ public class GripSubsystem extends Subsystem {
 
     private DoubleSolenoid gripSol;
 
-    private DoubleSolenoid.Value isSqueezed;
-
 
     public final boolean ENABLED;
     public GripSubsystem(boolean enabled) {
         ENABLED = enabled;
         if(ENABLED){
             gripSol = new DoubleSolenoid(RobotMap.gripForwardChannel, RobotMap.gripBackwardChannel);
-            
-            isSqueezed = gripSol.get();
         }
     }
 
@@ -33,7 +29,7 @@ public class GripSubsystem extends Subsystem {
     }
 
     public boolean isSqueezing(){
-        return isSqueezed == Value.kForward;
+        return gripSol.get() == Value.kForward;
     }
 
     public void squeeze(){

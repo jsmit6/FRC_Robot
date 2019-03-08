@@ -38,9 +38,9 @@ public class WristSubsystem extends Subsystem {
     public void ejectDisc(){
         System.out.println("Ejecto");
         eject.set(Value.kForward);
-        Timer.delay(1);
+        Timer.delay(0.1);
         eject.set(Value.kReverse);
-        Timer.delay(1);
+        Timer.delay(0.1);
         eject.set(Value.kOff);
     }
 

@@ -1,8 +1,8 @@
 package frc.robot.commands;
 
-import static frc.robot.XBoxControllerMap.*;
+import static frc.robot.XBoxControllerMap.B;
+import static frc.robot.XBoxControllerMap.RightJoystickY;
 
-import edu.wpi.first.wpilibj.DoubleSolenoid;
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.command.Command;
 import frc.robot.OI;
@@ -10,7 +10,7 @@ import frc.robot.Robot;
 
 public class Wrist extends Command {
 
-    private Joystick controller = OI.xboxControllerD2;
+    private Joystick controller = OI.xboxControllerD1;
     private double threshold = 0.05;
 
     public Wrist() {
@@ -26,7 +26,7 @@ public class Wrist extends Command {
     // Called repeatedly when this Command is scheduled to run
     @Override
     protected void execute() {
-        double yAxis = controller.getRawAxis(LeftJoystickY);
+        double yAxis = controller.getRawAxis(RightJoystickY);
 
         if(Math.abs(yAxis) > threshold){
             Robot.wristSubsystem.rotate(-yAxis / 2);
@@ -40,7 +40,7 @@ public class Wrist extends Command {
     // Make this return true when this Command no longer needs to run execute()
     @Override
     protected boolean isFinished() {
-        if(Math.abs(controller.getRawAxis(LeftJoystickY)) < threshold){
+        if(Math.abs(controller.getRawAxis(RightJoystickY)) < threshold){
                 return true;
         }
         return false;
