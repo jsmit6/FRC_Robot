@@ -18,14 +18,14 @@ import static frc.robot.RobotMap.rearRightMotorID;
 
 public class DriveSubsystem extends Subsystem {
 
-    private final double ROTATION_SPEED = 0.5;
+    private final double ROTATION_SPEED = 1;
     private final double Y_SPEED = 1;
 
     private CANSparkMax frontLeft;
-    private CANSparkMax rearLeft;
+    //private CANSparkMax rearLeft;
     private SpeedControllerGroup leftMotors;
 
-    private CANSparkMax frontRight;
+    //private CANSparkMax frontRight;
     private CANSparkMax rearRight;
     private SpeedControllerGroup rightMotors;
 
@@ -38,19 +38,19 @@ public class DriveSubsystem extends Subsystem {
             frontLeft = new CANSparkMax(frontLeftMotorID, MotorType.kBrushless);
             frontLeft.setInverted(false);
             
-            rearLeft = new CANSparkMax(rearLeftMotorID, MotorType.kBrushless);
-            rearLeft.setInverted(false);
+            //rearLeft = new CANSparkMax(rearLeftMotorID, MotorType.kBrushless);
+            //rearLeft.setInverted(false);
             
-            leftMotors = new SpeedControllerGroup(frontLeft, rearLeft  );
+            leftMotors = new SpeedControllerGroup(frontLeft);
             
             
-            frontRight = new CANSparkMax(frontRightMotorID, MotorType.kBrushless);
-            frontRight.setInverted(false);
+            //frontRight = new CANSparkMax(frontRightMotorID, MotorType.kBrushless);
+            //frontRight.setInverted(false);
             
             rearRight = new CANSparkMax(rearRightMotorID, MotorType.kBrushless);
             rearRight.setInverted(false);
             
-            rightMotors = new SpeedControllerGroup(frontRight, rearRight  );        
+            rightMotors = new SpeedControllerGroup(rearRight);        
 
             arcadeDrive = new DifferentialDrive(leftMotors, rightMotors);
             arcadeDrive.setSafetyEnabled(false);

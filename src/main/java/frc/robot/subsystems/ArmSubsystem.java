@@ -46,7 +46,7 @@ public class ArmSubsystem extends Subsystem {
 
     public void lift(double lTrigger, double rTrigger, boolean override){
         int potValue = (int) (pot.get() * 100);
-        System.out.println(potValue + " " + override);
+        //System.out.println(potValue + " " + override);
         
         if(potValue <= MIN_ARM_LOWER_POT && override && potValue >= OVERRIDE_MAX_ARM_RAISE_POT){
             liftMotor.set(lTrigger);
