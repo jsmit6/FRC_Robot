@@ -18,8 +18,8 @@ import static frc.robot.RobotMap.rearRightMotorID;
 
 public class DriveSubsystem extends Subsystem {
 
-    private final double ROTATION_SPEED = 1;
-    private final double Y_SPEED = 1;
+    private final double ROTATION_SPEED = .75;
+    private final double Y_SPEED = .75;
 
     private CANSparkMax frontLeft;
     private CANSparkMax rearLeft;
@@ -54,6 +54,11 @@ public class DriveSubsystem extends Subsystem {
 
             arcadeDrive = new DifferentialDrive(leftMotors, rightMotors);
             arcadeDrive.setSafetyEnabled(false);
+
+            updateAllSparks(frontLeft);
+            updateAllSparks(frontRight);
+            updateAllSparks(rearLeft);
+            updateAllSparks(rearRight);
         }
     }
 
@@ -67,7 +72,11 @@ public class DriveSubsystem extends Subsystem {
     @Override
     public void periodic() {
         // Put code here to be run every loop
-
+        
+        /*updateAllSparks(frontLeft);
+        updateAllSparks(frontRight);
+        updateAllSparks(rearLeft);
+        updateAllSparks(rearRight);*/
     }
 
     public void drive(double xAxis, double yAxis){
@@ -77,6 +86,11 @@ public class DriveSubsystem extends Subsystem {
     public void stop(){
         rightMotors.stopMotor();
         leftMotors.stopMotor();
+    }
+
+    public void updateAllSparks(CANSparkMax spark) {
+        //spark.setSmartCurrentLimit(60);
+        spark.setMotorType(MotorType.kBrushless);
     }
 
 }

@@ -51,7 +51,7 @@ public class Wrist extends Command {
     protected void end() {
         if(isFinished()){
             Robot.wristSubsystem.stop();
-        }
+        } 
     }
 
     // Called when another command which requires one or more of the same

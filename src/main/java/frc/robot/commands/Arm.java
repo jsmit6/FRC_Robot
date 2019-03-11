@@ -62,6 +62,7 @@ public class Arm extends Command {
             && Math.abs(controller.getRawAxis(RT)) < threshold){
                 return true;
         }
+        
         return false;
     }
 

@@ -35,14 +35,12 @@ public class GripSubsystem extends Subsystem {
     public void squeeze(){
         if((gripSol.get() != Value.kForward)){
             gripSol.set(Value.kForward);
-            //isSqueezed = gripSol.get();
         }    
     }
 
     public void unsqueeze(){
         if(gripSol.get() != Value.kReverse){
             gripSol.set(Value.kReverse);
-            //isSqueezed = gripSol.get();
         }
     }
     public void stop(){

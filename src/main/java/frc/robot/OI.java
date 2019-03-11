@@ -7,7 +7,7 @@ public class OI {
   
 
   public static Joystick xboxControllerD1;
-  //public static Joystick xboxControllerD2;
+  public static Joystick xboxControllerD2;
 
   public static JoystickButton squeezeGripButton;
   public static JoystickButton unsqueezeGripButton;
