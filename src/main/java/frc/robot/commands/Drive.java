@@ -9,7 +9,7 @@ import edu.wpi.first.wpilibj.command.Command;
 
 public class Drive extends Command {
 
-    private Joystick controller = OI.xboxControllerD1;
+    private Joystick controller = OI.xboxController;
 
     public Drive() {
         requires(Robot.driveSubsystem);
