@@ -7,6 +7,7 @@ import frc.robot.commands.ControlGripCommand;
 import frc.robot.commands.EjectCommand;
 import frc.robot.commands.GripAction;
 import frc.robot.commands.PickupCommand;
+import frc.robot.commands.SpitoutCommand;
 
 public class OI {
 
@@ -16,6 +17,7 @@ public class OI {
   public static JoystickButton unsqueezeGripButton;
 
   public static JoystickButton pickupButton;
+  public static JoystickButton spitOutButton;
 
   public static JoystickButton toggleEjectButton;
 
@@ -34,6 +36,9 @@ public class OI {
 
     pickupButton = new JoystickButton(xboxController, XBoxControllerMap.Y);
     pickupButton.whileHeld(new PickupCommand());
+
+    spitOutButton = new JoystickButton(xboxController, XBoxControllerMap.A);
+    spitOutButton.whileHeld(new SpitoutCommand());
 
     toggleEjectButton = new JoystickButton(xboxController, XBoxControllerMap.B);
     toggleEjectButton.whenPressed(ejectCommand);
