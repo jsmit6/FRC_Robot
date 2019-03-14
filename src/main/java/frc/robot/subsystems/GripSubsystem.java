@@ -16,6 +16,7 @@ public class GripSubsystem extends Subsystem {
         ENABLED = enabled;
         if(ENABLED){
             gripSol = new DoubleSolenoid(RobotMap.gripForwardChannel, RobotMap.gripBackwardChannel);
+            SmartDashboard.putString("Grip Subsystem", "Online");
         }
     }
 

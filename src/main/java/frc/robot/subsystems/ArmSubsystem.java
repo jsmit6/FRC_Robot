@@ -7,6 +7,7 @@ import com.revrobotics.CANSparkMaxLowLevel.MotorType;
 
 //import edu.wpi.first.wpilibj.AnalogPotentiometer;
 import edu.wpi.first.wpilibj.command.Subsystem;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 //import edu.wpi.first.wpilibj.interfaces.Potentiometer;
 //import frc.robot.RobotMap;
 import frc.robot.commands.Arm;
@@ -28,6 +29,7 @@ public class ArmSubsystem extends Subsystem {
         if(enabled){
             liftMotor = new CANSparkMax(armMotorID, MotorType.kBrushless);
             liftMotor.setInverted(false);
+            SmartDashboard.putString("Arm Subsystem", "Online");
         }
     }
 

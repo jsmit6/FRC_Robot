@@ -5,6 +5,7 @@ import frc.robot.RobotMap;
 import frc.robot.commands.Wrist;
 
 import edu.wpi.first.wpilibj.command.Subsystem;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 public class WristSubsystem extends Subsystem {
 
@@ -16,6 +17,7 @@ public class WristSubsystem extends Subsystem {
         if(enabled){
             wristMotor = new Spark(RobotMap.wristMotorID);
             wristMotor.setInverted(false);
+            SmartDashboard.putString("Wrist Subsystem", "Online");
         }
     }
 

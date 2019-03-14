@@ -2,6 +2,7 @@ package frc.robot.subsystems;
 
 import edu.wpi.first.wpilibj.Spark;
 import edu.wpi.first.wpilibj.command.Subsystem;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import frc.robot.RobotMap;
 
 public class ShootSubsystem extends Subsystem {
@@ -14,6 +15,7 @@ public class ShootSubsystem extends Subsystem {
         if(enabled){
             shootMotor = new Spark(RobotMap.shootMotorID);
             shootMotor.setInverted(false);
+            SmartDashboard.putString("Shoot Subsystem", "Online");
         }
     }
 

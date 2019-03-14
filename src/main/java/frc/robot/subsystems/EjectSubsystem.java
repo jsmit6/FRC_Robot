@@ -10,6 +10,7 @@ package frc.robot.subsystems;
 import edu.wpi.first.wpilibj.DoubleSolenoid;
 import edu.wpi.first.wpilibj.DoubleSolenoid.Value;
 import edu.wpi.first.wpilibj.command.Subsystem;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import frc.robot.RobotMap;
 
 /**
@@ -25,6 +26,7 @@ public class EjectSubsystem extends Subsystem {
   public EjectSubsystem() {
     eject.set(Value.kReverse);
     isEjected = false;
+    SmartDashboard.putString("Eject Subsystem", "Online");
   }
 
   @Override
