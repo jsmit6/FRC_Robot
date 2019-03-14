@@ -1,5 +1,10 @@
 package frc.robot;
 
+import com.revrobotics.CANSparkMax;
+import com.revrobotics.CANSparkMaxLowLevel.MotorType;
+
+import edu.wpi.first.wpilibj.SpeedControllerGroup;
+
 /**
  * The RobotMap is a mapping from the ports sensors and actuators are wired into
  * to a variable name. This provides flexibility changing wiring, makes checking
@@ -10,12 +15,12 @@ public class RobotMap {
   /**************DRIVE SUBSYSTEM****************/
 
   /* Left Drive Motors */
-  public static final int frontLeftMotorID = 1;
-  public static final int rearLeftMotorID = 2;
+  private static final int frontLeftMotorID = 1;
+  private static final int rearLeftMotorID = 2;
 
   /* Right Drive Motors */
-  public static final int frontRightMotorID = 3;
-  public static final int rearRightMotorID = 4;
+  private static final int frontRightMotorID = 3;
+  private static final int rearRightMotorID = 4;
 
   /*************END DRIVE SUBSYSTEM**************/
 
@@ -49,4 +54,47 @@ public class RobotMap {
   public static final int armPotentiometer = 0;
   /**********END SENSORS***************/
   
+
+  private static CANSparkMax frontLeft;
+  private static CANSparkMax rearLeft;
+  private static SpeedControllerGroup leftMotors;
+
+  private static CANSparkMax frontRight;
+  private static CANSparkMax rearRight;
+  private static SpeedControllerGroup rightMotors;
+
+  public static SpeedControllerGroup initializeLeftMotors(){
+    frontLeft = new CANSparkMax(frontLeftMotorID, MotorType.kBrushless);
+    frontLeft.setInverted(false);
+            
+    rearLeft = new CANSparkMax(rearLeftMotorID, MotorType.kBrushless);
+    rearLeft.setInverted(false);
+            
+    leftMotors = new SpeedControllerGroup(frontLeft, rearLeft);
+    return leftMotors;
+  }
+
+  public static SpeedControllerGroup initializeRightMotors(){
+    frontRight = new CANSparkMax(frontRightMotorID, MotorType.kBrushless);
+    frontRight.setInverted(false);
+            
+    rearRight = new CANSparkMax(rearRightMotorID, MotorType.kBrushless);
+    rearRight.setInverted(false);
+            
+    rightMotors = new SpeedControllerGroup(frontRight, rearRight);   
+    return rightMotors;
+  }
+
+  public static void updateAllSparks() {
+    updateAllSparks(frontLeft);
+    updateAllSparks(frontRight);
+    updateAllSparks(rearLeft);
+    updateAllSparks(rearRight);
+  }
+
+  private static void updateAllSparks(CANSparkMax spark){
+    //spark.setSmartCurrentLimit(60);
+    spark.setMotorType(MotorType.kBrushless);
+
+  }
 }

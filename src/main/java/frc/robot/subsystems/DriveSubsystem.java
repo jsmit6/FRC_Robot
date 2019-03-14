@@ -1,14 +1,7 @@
 package frc.robot.subsystems;
 
 import frc.robot.Constants;
-
-import static frc.robot.RobotMap.frontLeftMotorID;
-import static frc.robot.RobotMap.frontRightMotorID;
-import static frc.robot.RobotMap.rearLeftMotorID;
-import static frc.robot.RobotMap.rearRightMotorID;
-
-import com.revrobotics.CANSparkMax;
-import com.revrobotics.CANSparkMaxLowLevel.MotorType;
+import frc.robot.RobotMap;
 
 import edu.wpi.first.wpilibj.SpeedControllerGroup;
 import edu.wpi.first.wpilibj.command.Subsystem;
@@ -18,12 +11,7 @@ import frc.robot.commands.Drive;
 
 public class DriveSubsystem extends Subsystem {
 
-    private CANSparkMax frontLeft;
-    private CANSparkMax rearLeft;
     private SpeedControllerGroup leftMotors;
-
-    private CANSparkMax frontRight;
-    private CANSparkMax rearRight;
     private SpeedControllerGroup rightMotors;
 
     private DifferentialDrive arcadeDrive;
@@ -31,31 +19,12 @@ public class DriveSubsystem extends Subsystem {
 
     public DriveSubsystem(boolean enabled) {
         ENABLED = enabled;
-        if(enabled){
-            frontLeft = new CANSparkMax(frontLeftMotorID, MotorType.kBrushless);
-            frontLeft.setInverted(false);
-            
-            rearLeft = new CANSparkMax(rearLeftMotorID, MotorType.kBrushless);
-            rearLeft.setInverted(false);
-            
-            leftMotors = new SpeedControllerGroup(frontLeft, rearLeft);
-            
-            
-            frontRight = new CANSparkMax(frontRightMotorID, MotorType.kBrushless);
-            frontRight.setInverted(false);
-            
-            rearRight = new CANSparkMax(rearRightMotorID, MotorType.kBrushless);
-            rearRight.setInverted(false);
-            
-            rightMotors = new SpeedControllerGroup(frontRight, rearRight);        
+        if(enabled){            
+            leftMotors = RobotMap.initializeLeftMotors();
+            rightMotors = RobotMap.initializeRightMotors();       
 
             arcadeDrive = new DifferentialDrive(leftMotors, rightMotors);
             arcadeDrive.setSafetyEnabled(false);
-
-            updateAllSparks(frontLeft);
-            updateAllSparks(frontRight);
-            updateAllSparks(rearLeft);
-            updateAllSparks(rearRight);
         }
     }
 
@@ -69,11 +38,7 @@ public class DriveSubsystem extends Subsystem {
     @Override
     public void periodic() {
         // Put code here to be run every loop
-        
-        /*updateAllSparks(frontLeft);
-        updateAllSparks(frontRight);
-        updateAllSparks(rearLeft);
-        updateAllSparks(rearRight);*/
+        RobotMap.updateAllSparks();
     }
 
     public void drive(double xAxis, double yAxis){
@@ -84,10 +49,4 @@ public class DriveSubsystem extends Subsystem {
         rightMotors.stopMotor();
         leftMotors.stopMotor();
     }
-
-    public void updateAllSparks(CANSparkMax spark) {
-        //spark.setSmartCurrentLimit(60);
-        spark.setMotorType(MotorType.kBrushless);
-    }
-
 }
