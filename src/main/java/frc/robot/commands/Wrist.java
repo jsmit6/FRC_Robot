@@ -1,7 +1,5 @@
 package frc.robot.commands;
 
-import static frc.robot.XBoxControllerMap.RightJoystickY;
-
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.command.Command;
 import frc.robot.OI;
