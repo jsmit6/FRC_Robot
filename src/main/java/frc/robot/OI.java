@@ -6,6 +6,7 @@ import edu.wpi.first.wpilibj.command.Command;
 import frc.robot.commands.ControlGripCommand;
 import frc.robot.commands.EjectCommand;
 import frc.robot.commands.GripAction;
+import frc.robot.commands.PickupCommand;
 
 public class OI {
 
@@ -13,6 +14,9 @@ public class OI {
 
   public static JoystickButton squeezeGripButton;
   public static JoystickButton unsqueezeGripButton;
+
+  public static JoystickButton pickupButton;
+
   public static JoystickButton toggleEjectButton;
 
   private final Command ejectCommand = new EjectCommand();
@@ -27,6 +31,9 @@ public class OI {
       unsqueezeGripButton = new JoystickButton(xboxController, XBoxControllerMap.START);
       unsqueezeGripButton.whenPressed(new ControlGripCommand(GripAction.UNSQUEEZE));
     }
+
+    pickupButton = new JoystickButton(xboxController, XBoxControllerMap.Y);
+    pickupButton.whileHeld(new PickupCommand());
 
     toggleEjectButton = new JoystickButton(xboxController, XBoxControllerMap.B);
     toggleEjectButton.whenPressed(ejectCommand);
