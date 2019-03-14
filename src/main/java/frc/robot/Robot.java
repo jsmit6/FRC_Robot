@@ -9,6 +9,7 @@ import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import frc.robot.subsystems.ArmSubsystem;
 import frc.robot.subsystems.DriveSubsystem;
+import frc.robot.subsystems.EjectSubsystem;
 import frc.robot.subsystems.GripSubsystem;
 import frc.robot.subsystems.ShootSubsystem;
 import frc.robot.subsystems.WristSubsystem;
@@ -27,6 +28,7 @@ public class Robot extends TimedRobot {
   public static GripSubsystem gripSubsystem = new GripSubsystem(true);
   public static WristSubsystem wristSubsystem = new WristSubsystem(true);
   public static ShootSubsystem shootSubsystem = new ShootSubsystem(true);
+  public static EjectSubsystem ejectSubsystem = new EjectSubsystem();
   public static OI m_oi;
 
   Command m_autonomousCommand;

@@ -1,11 +1,5 @@
 package frc.robot;
 
-import com.revrobotics.CANSparkMax;
-import com.revrobotics.CANSparkMaxLowLevel.MotorType;
-
-import edu.wpi.first.wpilibj.DoubleSolenoid;
-import edu.wpi.first.wpilibj.SpeedControllerGroup;
-
 /**
  * The RobotMap is a mapping from the ports sensors and actuators are wired into
  * to a variable name. This provides flexibility changing wiring, makes checking
@@ -38,10 +32,6 @@ public class RobotMap {
   public static int gripForwardChannel = 0;
   public static int gripBackwardChannel = 1;
 
-  /* Right Grip Pneumatics */
-  //public static int rightGripForwardChannel = 3;
-  //public static int rightGripBackwardChannel = 4;
-
   /************END ARM SUBSYSTEM******************/
 
   /**********WRIST SUBSYSTEM*******************/
@@ -54,6 +44,11 @@ public class RobotMap {
   /**********SENSORS*******************/
   public static final int armPotentiometer = 0;
   /**********END SENSORS***************/
+
+  /***********Eject Subsystem******************/
+  public static final int ejectForwardChannel = 2;
+  public static final int ejectReverseChannel = 3;
+  /************END EJECT SUBSYSTEM**************/
   
 
   
