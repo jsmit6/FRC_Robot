@@ -10,6 +10,7 @@ import edu.wpi.first.wpilibj.command.Command;
 public class Drive extends Command {
 
     private Joystick controller = OI.xboxController;
+    private final double DEAD_ZONE = 0.2;
 
     public Drive() {
         requires(Robot.driveSubsystem);
@@ -23,16 +24,16 @@ public class Drive extends Command {
     // Called repeatedly when this Command is scheduled to run
     @Override
     protected void execute() {
-        double yAxis = XBoxController.leftJoystickY(controller);
-        double xAxis = XBoxController.rightJoystickX(controller);
+        double yAxis = XBoxController.leftJoystickY(controller, DEAD_ZONE);
+        double xAxis = XBoxController.rightJoystickX(controller, DEAD_ZONE);
         Robot.driveSubsystem.drive(xAxis, yAxis);
     }
 
     // Make this return true when this Command no longer needs to run execute()
     @Override
     protected boolean isFinished() {
-        return XBoxController.leftJoystickY(controller) == 0 &&
-               XBoxController.rightJoystickX(controller) == 0;
+        return XBoxController.leftJoystickY(controller, DEAD_ZONE) == 0 &&
+               XBoxController.rightJoystickX(controller, DEAD_ZONE) == 0;
     }
 
     // Called once after isFinished returns true
