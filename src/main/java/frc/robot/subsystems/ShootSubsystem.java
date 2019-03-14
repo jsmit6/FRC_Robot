@@ -3,7 +3,6 @@ package frc.robot.subsystems;
 import edu.wpi.first.wpilibj.Spark;
 import edu.wpi.first.wpilibj.command.Subsystem;
 import frc.robot.RobotMap;
-import frc.robot.commands.Shoot;
 
 public class ShootSubsystem extends Subsystem {
 
@@ -20,9 +19,7 @@ public class ShootSubsystem extends Subsystem {
 
     @Override
     public void initDefaultCommand() {
-        if(ENABLED){
-            setDefaultCommand(new Shoot());
-        }
+        
     }
 
     @Override
