@@ -30,12 +30,12 @@ public class ShootSubsystem extends Subsystem {
         // Put code here to be run every loop
     }
 
-    public void output(double shoot){
-        shootMotor.set(-shoot);
+    public void output(){
+        shootMotor.set(-1.0);
     }
 
-    public void input(double intake){
-        shootMotor.set(intake);
+    public void input(){
+        shootMotor.set(1.0);
     }
 
     public void stop(){
