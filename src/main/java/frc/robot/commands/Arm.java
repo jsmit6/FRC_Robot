@@ -10,6 +10,7 @@ import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.command.Command;
 import frc.robot.OI;
 import frc.robot.Robot;
+import frc.robot.XBoxController;
 
 import static frc.robot.RobotMap.armUpSwitchID;
 import static frc.robot.RobotMap.armDownSwitchID;
@@ -17,11 +18,11 @@ import static frc.robot.RobotMap.armDownSwitchID;
 public class Arm extends Command {
 
     private Joystick controller = OI.xboxController;
-    private double threshold = 0.05;
+    private double deadZone = 0.05;
 
     DigitalInput upLimitSwitch = new DigitalInput(armUpSwitchID);
     DigitalInput downLimitSwitch = new DigitalInput(armDownSwitchID);
-    
+
     Counter upCounter = new Counter(upLimitSwitch);
     Counter downCounter = new Counter(downLimitSwitch);
 
@@ -38,17 +39,17 @@ public class Arm extends Command {
     // Called repeatedly when this Command is scheduled to run
     @Override
     protected void execute() {
-        double rTrigger = controller.getRawAxis(RT);//Down
-        double lTrigger = controller.getRawAxis(LT);//UP
+        double rTrigger = XBoxController.RT(controller, deadZone);// Down
+        double lTrigger = XBoxController.LT(controller, deadZone);// UP
         boolean override = controller.getRawButton(X);
-        //If either axes is less than threshold don't use them.
-        if(Math.abs(rTrigger) < threshold || isUpSwitchSet()){
+        // If either axes is less than threshold don't use them.
+        if (rTrigger > 0 || isUpSwitchSet()) {
             rTrigger = 0;
         }
-        if(Math.abs(lTrigger) < threshold || isDownSwitchSet()){
+        if (lTrigger > 0 || isDownSwitchSet()) {
             lTrigger = 0;
         }
-        if(lTrigger > 0 && rTrigger > 0){
+        if (lTrigger > 0 && rTrigger > 0) {
             lTrigger = 0;
             rTrigger = 0;
         }
@@ -58,18 +59,13 @@ public class Arm extends Command {
     // Make this return true when this Command no longer needs to run execute()
     @Override
     protected boolean isFinished() {
-        if(Math.abs(controller.getRawAxis(LT))  < threshold  
-            && Math.abs(controller.getRawAxis(RT)) < threshold){
-                return true;
-        }
-        
-        return false;
+        return XBoxController.RT(controller, deadZone) == 0 && XBoxController.LT(controller, deadZone) == 0;
     }
 
     // Called once after isFinished returns true
     @Override
     protected void end() {
-        if(isFinished()){
+        if (isFinished()) {
             Robot.armSubsystem.stop();
         }
     }
@@ -81,7 +77,7 @@ public class Arm extends Command {
 
     }
 
-    protected void initializeLimitSwitches(){
+    protected void initializeLimitSwitches() {
         upCounter.reset();
         downCounter.reset();
     }
