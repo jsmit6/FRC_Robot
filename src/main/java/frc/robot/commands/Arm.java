@@ -1,7 +1,5 @@
 package frc.robot.commands;
 
-import static frc.robot.XBoxControllerMap.LT;
-import static frc.robot.XBoxControllerMap.RT;
 import static frc.robot.XBoxControllerMap.X;
 
 import edu.wpi.first.wpilibj.Counter;
