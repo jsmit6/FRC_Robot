@@ -3,6 +3,7 @@ package frc.robot.subsystems;
 import edu.wpi.first.wpilibj.DoubleSolenoid;
 import edu.wpi.first.wpilibj.DoubleSolenoid.Value;
 import edu.wpi.first.wpilibj.command.Subsystem;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import frc.robot.RobotMap;
 
 public class GripSubsystem extends Subsystem {
@@ -25,7 +26,6 @@ public class GripSubsystem extends Subsystem {
 
     @Override
     public void periodic() {
-
     }
 
     public boolean isSqueezing(){
@@ -36,14 +36,25 @@ public class GripSubsystem extends Subsystem {
         if((gripSol.get() != Value.kForward)){
             gripSol.set(Value.kForward);
         }    
+        updateSmartDashboard();
     }
 
     public void unsqueeze(){
         if(gripSol.get() != Value.kReverse){
             gripSol.set(Value.kReverse);
         }
+        updateSmartDashboard();
     }
+
     public void stop(){
         gripSol.set(Value.kOff);
+    }
+
+    private void updateSmartDashboard(){
+        if(isSqueezing()){
+            SmartDashboard.putString("Grip Mode", "Squeezing as best I can :)");
+        } else {
+            SmartDashboard.putString("Grip Mode", "Stopped squeezing :(");
+        }
     }
 }
