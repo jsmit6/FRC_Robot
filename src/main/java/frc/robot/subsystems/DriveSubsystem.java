@@ -31,7 +31,7 @@ public class DriveSubsystem extends Subsystem {
             initializeRightMotors();
 
             arcadeDrive = new DifferentialDrive(leftMotors, rightMotors);
-            arcadeDrive.setSafetyEnabled(false);
+            arcadeDrive.setSafetyEnabled(true);
             SmartDashboard.putString("Drive Subsystem", "Online");
         }
     }
@@ -83,7 +83,7 @@ public class DriveSubsystem extends Subsystem {
     }
 
     private void updateAllSparks(CANSparkMax spark) {
-        // spark.setSmartCurrentLimit(60);
+        spark.setSmartCurrentLimit(10);
         spark.setMotorType(MotorType.kBrushless);
     }
 }
