@@ -50,6 +50,9 @@ public class RobotMap {
   public static final int ejectReverseChannel = 3;
   /************END EJECT SUBSYSTEM**************/
   
-
+  /***********Arm Brake Subsystem******************/
+  public static final int brakeOnChannel = 4;
+  public static final int brakeOffChannel = 5;
+  /***********End Arm Brake Subsystem******************/
   
 }
