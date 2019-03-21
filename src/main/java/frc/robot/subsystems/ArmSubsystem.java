@@ -49,6 +49,7 @@ public class ArmSubsystem extends Subsystem {
     @Override
     public void periodic() {
         SmartDashboard.putNumber("Arm Potentiometer", getPotValue());
+        liftMotor.setOpenLoopRampRate(0.4);
     }
 
     private int getPotValue() {

@@ -14,13 +14,13 @@ public class OI {
 
   public OI(){
     xboxControllerD1 = new Joystick(0);
-    //xboxControllerD2 = new Joystick(1);
+    xboxControllerD2 = new Joystick(1);
 
     if(Robot.gripSubsystem.ENABLED){
-      squeezeGripButton = new JoystickButton(xboxControllerD1, XBoxControllerMap.BACK);
+      squeezeGripButton = new JoystickButton(xboxControllerD2, XBoxControllerMap.BACK);
       squeezeGripButton.whenPressed(new ControlGripCommand(GripAction.SQUEEZE));
 
-      unsqueezeGripButton = new JoystickButton(xboxControllerD1, XBoxControllerMap.START);
+      unsqueezeGripButton = new JoystickButton(xboxControllerD2, XBoxControllerMap.START);
       unsqueezeGripButton.whenPressed(new ControlGripCommand(GripAction.UNSQUEEZE));
     }
   }

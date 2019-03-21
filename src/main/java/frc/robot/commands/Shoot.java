@@ -24,8 +24,8 @@ public class Shoot extends Command {
     // Called repeatedly when this Command is scheduled to run
     @Override
     protected void execute() {
-        boolean input = controller.getRawButton(Y);
-        boolean output = controller.getRawButton(A);
+        boolean input = controller.getRawButton(LB);
+        boolean output = controller.getRawButton(RB);
 
         if(input){
             Robot.shootSubsystem.input();
@@ -37,7 +37,7 @@ public class Shoot extends Command {
     // Make this return true when this Command no longer needs to run execute()
     @Override
     protected boolean isFinished() {
-        if(!controller.getRawButton(A) && !controller.getRawButton(Y)){
+        if(!controller.getRawButton(LB) && !controller.getRawButton(RB)){
                 return true;
         }
         return false;

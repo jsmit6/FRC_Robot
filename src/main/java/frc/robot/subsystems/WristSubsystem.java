@@ -26,6 +26,7 @@ public class WristSubsystem extends Subsystem {
         if(enabled){
             wristMotor = new Spark(RobotMap.wristMotorID);
             wristMotor.setInverted(false);
+            
             eject.set(Value.kReverse);
             SmartDashboard.putString("Wrist Subsystem", "Online");
         } else {
