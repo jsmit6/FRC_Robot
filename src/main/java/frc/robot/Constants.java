@@ -1,6 +1,8 @@
 package frc.robot;
 
 public class Constants{
-    public static double Y_SPEED = 1;
-    public static double ROTATION_SPEED = 1;
+    public static final double Y_SPEED = 1;
+    public static final double ROTATION_SPEED = 1;
+
+    public static final int VOLTAGE_LIMIT = 35;
 }

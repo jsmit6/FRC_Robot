@@ -5,29 +5,31 @@ import static frc.robot.RobotMap.armMotorID;
 import com.revrobotics.CANSparkMax;
 import com.revrobotics.CANSparkMaxLowLevel.MotorType;
 
-//import edu.wpi.first.wpilibj.AnalogPotentiometer;
+import edu.wpi.first.wpilibj.AnalogPotentiometer;
 import edu.wpi.first.wpilibj.command.Subsystem;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
-//import edu.wpi.first.wpilibj.interfaces.Potentiometer;
-//import frc.robot.RobotMap;
+import edu.wpi.first.wpilibj.interfaces.Potentiometer;
+import frc.robot.Constants;
+import frc.robot.RobotMap;
 import frc.robot.commands.Arm;
 
 public class ArmSubsystem extends Subsystem {
     public final boolean ENABLED;
 
     private CANSparkMax liftMotor;
-    /*private Potentiometer pot = new AnalogPotentiometer(RobotMap.armPotentiometer);
+    private Potentiometer pot = new AnalogPotentiometer(RobotMap.armPotentiometer);
 
 
     private final int MAX_ARM_RAISE_POT = 24;
     private final int MIN_ARM_LOWER_POT = 31;
-    private final int OVERRIDE_MAX_ARM_RAISE_POT = 19;*/
+    private final int OVERRIDE_MAX_ARM_RAISE_POT = 19;
 
 
     public ArmSubsystem(boolean enabled) {
         ENABLED = enabled;
         if(enabled){
             liftMotor = new CANSparkMax(armMotorID, MotorType.kBrushless);
+            liftMotor.setSmartCurrentLimit(Constants.VOLTAGE_LIMIT);
             liftMotor.setInverted(false);
             SmartDashboard.putString("Arm Subsystem", "Online");
         }
@@ -47,17 +49,16 @@ public class ArmSubsystem extends Subsystem {
     }
 
     public void lift(double lTrigger, double rTrigger, boolean override){
-        //int potValue = (int) (pot.get() * 100);
-        //System.out.println(potValue + " " + override);
+        int potValue = (int) (pot.get() * 100);
+        System.out.println(potValue + " " + override);
         
-        /*if(potValue <= MIN_ARM_LOWER_POT && override && potValue >= OVERRIDE_MAX_ARM_RAISE_POT){
+        if(potValue <= MIN_ARM_LOWER_POT && override && potValue >= OVERRIDE_MAX_ARM_RAISE_POT){
             liftMotor.set(lTrigger);
         }else if(potValue >= 31){
-            // Stop Lowering
             liftMotor.set(-rTrigger);
-        }else{*/
+        }else{
             liftMotor.set((lTrigger - rTrigger));
-        //}
+        }
     }
 
     public void stop(){
