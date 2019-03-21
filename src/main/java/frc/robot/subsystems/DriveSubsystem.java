@@ -45,10 +45,10 @@ public class DriveSubsystem extends Subsystem {
 
     @Override
     public void periodic() {
-        updateAllSparks(frontLeft);
-        updateAllSparks(frontRight);
-        updateAllSparks(rearLeft);
-        updateAllSparks(rearRight);
+        updateSpark(frontLeft);
+        updateSpark(frontRight);
+        updateSpark(rearLeft);
+        updateSpark(rearRight);
     }
 
     public void drive(double xAxis, double yAxis) {
@@ -82,8 +82,8 @@ public class DriveSubsystem extends Subsystem {
         return rightMotors;
     }
 
-    private void updateAllSparks(CANSparkMax spark) {
-        spark.setSmartCurrentLimit(10);
+    private void updateSpark(CANSparkMax spark) {
+        spark.setSmartCurrentLimit(Constants.VOLTAGE_LIMIT);
         spark.setMotorType(MotorType.kBrushless);
     }
 }
