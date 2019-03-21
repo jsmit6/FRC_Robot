@@ -14,7 +14,7 @@ public class Constants{
     public static final int OVERRIDE_MAX_ARM_RAISE_POT = 19;
     
     //Number of seconds
-    public static final double DRIVE_RAMP_RATE_SECONDS = .4;
+    public static final double DRIVE_RAMP_RATE_SECONDS = .3;
 
     //399
     //456
