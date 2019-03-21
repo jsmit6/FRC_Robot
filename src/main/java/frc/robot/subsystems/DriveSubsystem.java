@@ -1,5 +1,11 @@
 package frc.robot.subsystems;
 
+import frc.robot.Constants;
+
+import static frc.robot.RobotMap.frontLeftMotorID;
+import static frc.robot.RobotMap.frontRightMotorID;
+import static frc.robot.RobotMap.rearLeftMotorID;
+import static frc.robot.RobotMap.rearRightMotorID;
 
 import com.revrobotics.CANSparkMax;
 import com.revrobotics.CANSparkMaxLowLevel.MotorType;
@@ -9,17 +15,9 @@ import edu.wpi.first.wpilibj.command.Subsystem;
 import edu.wpi.first.wpilibj.drive.DifferentialDrive;
 import frc.robot.commands.Drive;
 
-import static frc.robot.RobotMap.frontLeftMotorID;
-import static frc.robot.RobotMap.rearLeftMotorID;
-
-import static frc.robot.RobotMap.frontRightMotorID;
-import static frc.robot.RobotMap.rearRightMotorID;
-
 
 public class DriveSubsystem extends Subsystem {
 
-    private final double ROTATION_SPEED = .75;
-    private final double Y_SPEED = .75;
 
     private CANSparkMax frontLeft;
     private CANSparkMax rearLeft;
@@ -73,14 +71,14 @@ public class DriveSubsystem extends Subsystem {
     public void periodic() {
         // Put code here to be run every loop
         
-        /*updateAllSparks(frontLeft);
+        updateAllSparks(frontLeft);
         updateAllSparks(frontRight);
         updateAllSparks(rearLeft);
-        updateAllSparks(rearRight);*/
+        updateAllSparks(rearRight);
     }
 
     public void drive(double xAxis, double yAxis){
-        arcadeDrive.arcadeDrive(-yAxis * Y_SPEED, xAxis * ROTATION_SPEED);
+        arcadeDrive.arcadeDrive(-yAxis * Constants.Y_SPEED, xAxis * Constants.ROTATION_SPEED);
     }
 
     public void stop(){
@@ -89,7 +87,8 @@ public class DriveSubsystem extends Subsystem {
     }
 
     public void updateAllSparks(CANSparkMax spark) {
-        //spark.setSmartCurrentLimit(60);
+        spark.setSmartCurrentLimit(35);
+        spark.setOpenLoopRampRate(Constants.DRIVE_RAMP_RATE_SECONDS);
         spark.setMotorType(MotorType.kBrushless);
     }
 

@@ -1,13 +1,15 @@
 package frc.robot.subsystems;
 
+import edu.wpi.first.wpilibj.AnalogPotentiometer;
 import edu.wpi.first.wpilibj.DoubleSolenoid;
 import edu.wpi.first.wpilibj.DoubleSolenoid.Value;
 import edu.wpi.first.wpilibj.Spark;
+import edu.wpi.first.wpilibj.Timer;
+import edu.wpi.first.wpilibj.command.Subsystem;
+import edu.wpi.first.wpilibj.interfaces.Potentiometer;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import frc.robot.RobotMap;
 import frc.robot.commands.Wrist;
-import edu.wpi.first.wpilibj.Timer;
-
-import edu.wpi.first.wpilibj.command.Subsystem;
 
 public class WristSubsystem extends Subsystem {
 
@@ -15,7 +17,9 @@ public class WristSubsystem extends Subsystem {
     public final boolean ENABLED;
     private boolean isejected;
 
-    private DoubleSolenoid eject = new DoubleSolenoid(2, 3);
+    private DoubleSolenoid eject = new DoubleSolenoid(1, 0);
+
+    private Potentiometer pot = new AnalogPotentiometer(RobotMap.wristPotentiometer);
 
     public WristSubsystem(boolean enabled) {
         ENABLED = enabled;
@@ -23,6 +27,9 @@ public class WristSubsystem extends Subsystem {
             wristMotor = new Spark(RobotMap.wristMotorID);
             wristMotor.setInverted(false);
             eject.set(Value.kReverse);
+            SmartDashboard.putString("Wrist Subsystem", "Online");
+        } else {
+            SmartDashboard.putString("Wrist Subsystem", "Offline");
         }
         isejected = false;
     }
@@ -33,10 +40,10 @@ public class WristSubsystem extends Subsystem {
             setDefaultCommand(new Wrist());
         }
     }
-
+    
     @Override
     public void periodic() {
-        // Put code here to be run every loop
+        SmartDashboard.putNumber("Wrist Pot", getPotValue());
     }
 
     public void ejectDisc(){
@@ -55,7 +62,21 @@ public class WristSubsystem extends Subsystem {
         wristMotor.set(yAxis);
     }
 
+    private int getPotValue(){
+        return (int) (pot.get() * 1000);
+    }
+
+    public void rotateToPosition(int potentiometerValue){
+        int potValue = getPotValue();
+        System.out.println(potValue);
+        if(potValue < potentiometerValue){
+            // Rotate wrist certain direction
+        }else{
+            // Rotate wrist other direction
+        }
+    }
+
     public void stop(){
         wristMotor.stopMotor();
-    }
+}
 }

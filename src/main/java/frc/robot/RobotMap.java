@@ -29,12 +29,8 @@ public class RobotMap {
   public static final int armDownSwitchID = 1;
 
   /* Left Grip Pneumatics */
-  public static int gripForwardChannel = 0;
-  public static int gripBackwardChannel = 1;
-
-  /* Right Grip Pneumatics */
-  //public static int rightGripForwardChannel = 3;
-  //public static int rightGripBackwardChannel = 4;
+  public static int gripForwardChannel = 2;
+  public static int gripBackwardChannel = 3;
 
   /************END ARM SUBSYSTEM******************/
 
@@ -47,6 +43,7 @@ public class RobotMap {
 
   /**********SENSORS*******************/
   public static final int armPotentiometer = 0;
+  public static final int wristPotentiometer = 1;
   /**********END SENSORS***************/
   
 }

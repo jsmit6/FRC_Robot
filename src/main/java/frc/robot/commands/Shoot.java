@@ -28,9 +28,9 @@ public class Shoot extends Command {
         boolean output = controller.getRawButton(A);
 
         if(input){
-            Robot.shootSubsystem.input(1.0);
+            Robot.shootSubsystem.input();
         } else if(output){
-            Robot.shootSubsystem.output(1.0);
+            Robot.shootSubsystem.output();
         }
     }
 
