@@ -30,6 +30,7 @@ public class ArmSubsystem extends Subsystem {
         } else {
             SmartDashboard.putString("Arm Subsystem", "Offline");
         }
+        SmartDashboard.putBoolean("Arm Override", false);
     }
 
     @Override
@@ -41,13 +42,16 @@ public class ArmSubsystem extends Subsystem {
 
     @Override
     public void periodic() {
-        // Put code here to be run every loop
+       SmartDashboard.putNumber("Arm Potentiometer", getPotValue());
+    }
 
+    private int getPotValue(){
+        return (int) (pot.get() * 100);
     }
 
     public void lift(double lTrigger, double rTrigger, boolean override){
-        int potValue = (int) (pot.get() * 100);
-        System.out.println(potValue + " " + override);
+        int potValue = getPotValue();
+        SmartDashboard.putBoolean("Arm Override", override);
         WristSubsystem wrist = Robot.wristSubsystem;
         
         if(potValue <= Constants.MIN_ARM_LOWER_POT && override && potValue >= Constants.OVERRIDE_MAX_ARM_RAISE_POT){

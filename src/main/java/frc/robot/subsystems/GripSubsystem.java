@@ -20,6 +20,7 @@ public class GripSubsystem extends Subsystem {
         } else {
             SmartDashboard.putString("Grip Subsystem", "Offline");
         }
+        SmartDashboard.putString("Grip Mode", "I'm just waiting.");
     }
 
     @Override

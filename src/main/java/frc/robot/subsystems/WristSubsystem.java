@@ -36,15 +36,19 @@ public class WristSubsystem extends Subsystem {
 
     @Override
     public void periodic() {
-        // Put code here to be run every loop
+        SmartDashboard.putNumber("Wrist Pot", getPotValue());
     }
 
     public void rotate(double yAxis){
         wristMotor.set(yAxis);
     }
 
+    private int getPotValue(){
+        return (int) (pot.get() * 100);
+    }
+
     public void rotateToPosition(int potentiometerValue){
-        int potValue = (int) (pot.get() * 100);
+        int potValue = getPotValue();
         if(potValue < potentiometerValue){
             // Rotate wrist certain direction
         }else{

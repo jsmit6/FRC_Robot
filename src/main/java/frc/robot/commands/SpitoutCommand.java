@@ -8,6 +8,7 @@
 package frc.robot.commands;
 
 import edu.wpi.first.wpilibj.command.Command;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import frc.robot.Robot;
 
 public class SpitoutCommand extends Command {
@@ -25,6 +26,7 @@ public class SpitoutCommand extends Command {
   // Called repeatedly when this Command is scheduled to run
   @Override
   protected void execute() {
+    SmartDashboard.putString("Vomit Ball", "Blech");
     Robot.shootSubsystem.output();
   }
 

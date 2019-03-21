@@ -27,6 +27,11 @@ public class EjectSubsystem extends Subsystem {
     eject.set(Value.kReverse);
     isEjected = false;
     SmartDashboard.putString("Eject Subsystem", "Online");
+    SmartDashboard.putBoolean("Ejectocito Cuz", isEjected);
+  }
+
+  @Override
+  public void periodic() {
   }
 
   @Override
@@ -42,5 +47,6 @@ public class EjectSubsystem extends Subsystem {
       eject.set(Value.kForward);
       isEjected = true;
     }
+    SmartDashboard.putBoolean("Ejectocito Cuz", isEjected);
   }
 }
