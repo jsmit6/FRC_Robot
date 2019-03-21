@@ -10,6 +10,7 @@ import edu.wpi.first.wpilibj.command.Subsystem;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj.interfaces.Potentiometer;
 import frc.robot.Constants;
+import frc.robot.Robot;
 import frc.robot.RobotMap;
 import frc.robot.commands.Arm;
 
@@ -18,12 +19,6 @@ public class ArmSubsystem extends Subsystem {
 
     private CANSparkMax liftMotor;
     private Potentiometer pot = new AnalogPotentiometer(RobotMap.armPotentiometer);
-
-
-    private final int MAX_ARM_RAISE_POT = 24;
-    private final int MIN_ARM_LOWER_POT = 31;
-    private final int OVERRIDE_MAX_ARM_RAISE_POT = 19;
-
 
     public ArmSubsystem(boolean enabled) {
         ENABLED = enabled;
@@ -51,10 +46,12 @@ public class ArmSubsystem extends Subsystem {
     public void lift(double lTrigger, double rTrigger, boolean override){
         int potValue = (int) (pot.get() * 100);
         System.out.println(potValue + " " + override);
+        WristSubsystem wrist = Robot.wristSubsystem;
         
-        if(potValue <= MIN_ARM_LOWER_POT && override && potValue >= OVERRIDE_MAX_ARM_RAISE_POT){
+        if(potValue <= Constants.MIN_ARM_LOWER_POT && override && potValue >= Constants.OVERRIDE_MAX_ARM_RAISE_POT){
+            wrist.rotateToPosition(Constants.WRIST_MIN_LIMIT);
             liftMotor.set(lTrigger);
-        }else if(potValue >= 31){
+        }else if(potValue >= Constants.MIN_ARM_LOWER_POT){
             liftMotor.set(-rTrigger);
         }else{
             liftMotor.set((lTrigger - rTrigger));
