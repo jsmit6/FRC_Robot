@@ -6,5 +6,11 @@ public class Constants{
 
     public static final int VOLTAGE_LIMIT = 35;
 
-    //public static final int RAMP_VALUE = 0;
+    public static final int WRIST_MAX_LIMIT = 0;
+    public static final int WRIST_MIN_LIMIT = 0;
+
+    public static final int MAX_ARM_RAISE_POT = 24;
+    public static final int MIN_ARM_LOWER_POT = 31;
+    public static final int OVERRIDE_MAX_ARM_RAISE_POT = 19;
+
 }

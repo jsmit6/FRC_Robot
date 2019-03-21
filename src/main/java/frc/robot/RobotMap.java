@@ -43,6 +43,7 @@ public class RobotMap {
 
   /**********SENSORS*******************/
   public static final int armPotentiometer = 0;
+  public static final int wristPotentiometer = 1;
   /**********END SENSORS***************/
 
   /***********Eject Subsystem******************/
