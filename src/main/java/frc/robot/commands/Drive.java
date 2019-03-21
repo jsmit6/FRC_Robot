@@ -32,8 +32,8 @@ public class Drive extends Command {
     // Called repeatedly when this Command is scheduled to run
     @Override
     protected void execute() {
-        double yAxis = getControllerYAxis();
         double xAxis = getControllerXAxis();
+        double yAxis = getControllerYAxis();
         Robot.driveSubsystem.drive(xAxis, yAxis);
     }
 
