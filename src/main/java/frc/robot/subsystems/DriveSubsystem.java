@@ -85,5 +85,6 @@ public class DriveSubsystem extends Subsystem {
     private void updateSpark(CANSparkMax spark) {
         spark.setSmartCurrentLimit(Constants.VOLTAGE_LIMIT);
         spark.setMotorType(MotorType.kBrushless);
+        //spark.setpOpenLoopRampRate(Constants.RAMP_VALUE);
     }
 }
