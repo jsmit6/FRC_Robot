@@ -16,6 +16,14 @@ public class Drive extends Command {
         requires(Robot.driveSubsystem);
     }
 
+    private double getControllerXAxis(){
+        return XBoxController.leftJoystickY(controller, DEAD_ZONE);
+    }
+
+    private double getControllerYAxis(){
+        return XBoxController.rightJoystickX(controller, DEAD_ZONE);
+    }
+
     // Called just before this Command runs the first time
     @Override
     protected void initialize() {
@@ -24,16 +32,15 @@ public class Drive extends Command {
     // Called repeatedly when this Command is scheduled to run
     @Override
     protected void execute() {
-        double yAxis = XBoxController.leftJoystickY(controller, DEAD_ZONE);
-        double xAxis = XBoxController.rightJoystickX(controller, DEAD_ZONE);
+        double yAxis = getControllerXAxis();
+        double xAxis = getControllerYAxis();
         Robot.driveSubsystem.drive(xAxis, yAxis);
     }
 
     // Make this return true when this Command no longer needs to run execute()
     @Override
     protected boolean isFinished() {
-        return XBoxController.leftJoystickY(controller, DEAD_ZONE) == 0 &&
-               XBoxController.rightJoystickX(controller, DEAD_ZONE) == 0;
+        return getControllerXAxis() == 0 && getControllerYAxis() == 0;
     }
 
     // Called once after isFinished returns true
