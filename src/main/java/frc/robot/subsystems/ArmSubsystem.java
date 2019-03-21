@@ -6,9 +6,12 @@ import com.revrobotics.CANSparkMax;
 import com.revrobotics.CANSparkMaxLowLevel.MotorType;
 
 import edu.wpi.first.wpilibj.AnalogPotentiometer;
+import edu.wpi.first.wpilibj.DoubleSolenoid;
+import edu.wpi.first.wpilibj.DoubleSolenoid.Value;
 import edu.wpi.first.wpilibj.command.Subsystem;
-import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj.interfaces.Potentiometer;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
+import edu.wpi.first.wpilibj.Timer;
 import frc.robot.Constants;
 import frc.robot.Robot;
 import frc.robot.RobotMap;
@@ -19,6 +22,9 @@ public class ArmSubsystem extends Subsystem {
 
     private CANSparkMax liftMotor;
     private Potentiometer pot = new AnalogPotentiometer(RobotMap.armPotentiometer);
+
+    private DoubleSolenoid brakeSol = new DoubleSolenoid(4, 5);
+    private boolean brakeEngaged = true;
 
     public ArmSubsystem(boolean enabled) {
         ENABLED = enabled;
@@ -49,11 +55,24 @@ public class ArmSubsystem extends Subsystem {
         return (int) (pot.get() * 100);
     }
 
+    private void unbrake(){
+        brakeSol.set(Value.kReverse);
+        brakeEngaged = false;
+    }
+
+    private void brake(){
+        brakeSol.set(Value.kForward);
+        brakeEngaged = true;
+    }
+
     public void lift(double lTrigger, double rTrigger, boolean override){
         int potValue = getPotValue();
         SmartDashboard.putBoolean("Arm Override", override);
         WristSubsystem wrist = Robot.wristSubsystem;
-        
+        if(brakeEngaged){
+            unbrake();
+            Timer.delay(0.2);
+        }
         if(potValue <= Constants.MIN_ARM_LOWER_POT && override && potValue >= Constants.OVERRIDE_MAX_ARM_RAISE_POT){
             wrist.rotateToPosition(Constants.WRIST_MIN_LIMIT);
             liftMotor.set(lTrigger);
@@ -66,5 +85,6 @@ public class ArmSubsystem extends Subsystem {
 
     public void stop(){
         liftMotor.stopMotor();
+        brake();
     }
 }
