@@ -25,7 +25,11 @@ public class Wrist extends Command {
     @Override
     protected void execute() {
         double yAxis = XBoxController.rightJoystickY(controller, deadZone);
-        Robot.wristSubsystem.rotate(-yAxis / 2);
+        if(yAxis != 0) {
+            Robot.wristSubsystem.rotate(-yAxis / 2);
+        } else {
+            end();
+        }
     }
 
     // Make this return true when this Command no longer needs to run execute()
