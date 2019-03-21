@@ -27,6 +27,8 @@ public class ArmSubsystem extends Subsystem {
             liftMotor.setSmartCurrentLimit(Constants.VOLTAGE_LIMIT);
             liftMotor.setInverted(false);
             SmartDashboard.putString("Arm Subsystem", "Online");
+        } else {
+            SmartDashboard.putString("Arm Subsystem", "Offline");
         }
     }
 

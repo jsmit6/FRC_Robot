@@ -21,10 +21,14 @@ public class Wrist extends Command {
 
     }
 
+    private double getControllerAxis(){
+        return XBoxController.rightJoystickY(controller, deadZone);
+    }
+
     // Called repeatedly when this Command is scheduled to run
     @Override
     protected void execute() {
-        double yAxis = XBoxController.rightJoystickY(controller, deadZone);
+        double yAxis = getControllerAxis();
         if(yAxis != 0) {
             Robot.wristSubsystem.rotate(-yAxis / 2);
         } else {
@@ -35,7 +39,7 @@ public class Wrist extends Command {
     // Make this return true when this Command no longer needs to run execute()
     @Override
     protected boolean isFinished() {
-        return XBoxController.rightJoystickY(controller, deadZone) == 0;
+        return getControllerAxis() == 0;
     }
 
     // Called once after isFinished returns true

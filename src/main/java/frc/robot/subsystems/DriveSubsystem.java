@@ -33,6 +33,8 @@ public class DriveSubsystem extends Subsystem {
             arcadeDrive = new DifferentialDrive(leftMotors, rightMotors);
             arcadeDrive.setSafetyEnabled(true);
             SmartDashboard.putString("Drive Subsystem", "Online");
+        } else {
+            SmartDashboard.putString("Drive Subsystem", "Offline");
         }
     }
 

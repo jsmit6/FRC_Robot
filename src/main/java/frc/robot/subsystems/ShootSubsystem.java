@@ -16,6 +16,8 @@ public class ShootSubsystem extends Subsystem {
             shootMotor = new Spark(RobotMap.shootMotorID);
             shootMotor.setInverted(false);
             SmartDashboard.putString("Shoot Subsystem", "Online");
+        } else {
+            SmartDashboard.putString("Shoot Subsystem", "Offline");
         }
     }
 
