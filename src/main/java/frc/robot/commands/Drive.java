@@ -1,6 +1,7 @@
 package frc.robot.commands;
 
 import frc.robot.Robot;
+import frc.robot.XBoxControllerMap;
 import frc.robot.OI;
 
 import edu.wpi.first.wpilibj.Joystick;
@@ -33,6 +34,11 @@ public class Drive extends Command {
         }
         if(Math.abs(yAxis) < threshold){
             yAxis = 0;
+        }
+        if(controller.getPOV() == XBoxControllerMap.WEST){
+            xAxis = -0.3;
+        } else if(controller.getPOV() == XBoxControllerMap.EAST){
+            xAxis = 0.3;
         }
         Robot.driveSubsystem.drive(xAxis, yAxis);
     }
